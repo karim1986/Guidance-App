@@ -1,0 +1,253 @@
+@import "../../components/common/colors.scss";
+
+.privatePage-container {
+    width: 70%;
+    height: 90vh;
+    margin: 3rem auto;
+}
+
+.grid__2x3 {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3,  1fr);
+    grid-template-rows: 300px 180px 1fr;
+    gap: 1rem;
+}
+
+.pofile-box, .notefication-container, .chat-box {
+    background: $secondary-color;
+    border-radius: 7px;
+    border: 1px solid $primary-color;
+   
+}
+
+.pofile-box {
+    position: relative;
+    grid-row: 1 / 2;
+    padding-right: 2rem;
+}
+
+.guidance-logo {
+    h3 {
+        text-align: center;
+        font-family: MonteCarlo;
+        font-size: 3rem;
+        font-weight: 100;
+        color: #fff;
+        margin: 0;
+    }
+}
+
+.logout-bnt {
+    button {
+        background: $primary-color !important;
+    }
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.profile-image {
+    margin-right: 0.6rem;
+    img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid $primary-color;
+    }
+}
+
+.flex-position {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-status {
+    p {
+        color: #fff;
+        font-size: 1.3rem;
+    }
+    :nth-child(1) {
+        font-weight: bold;
+    }
+    :nth-child(2) {
+        color: rgba(245, 245, 245, 0.589);
+        color: $primary-color;
+    }
+}
+
+.creation-date {
+    p {
+        color: rgba(245, 245, 245, 0.589);
+        font-size: 1.3rem;
+    }
+}
+
+.notefication-container {
+   grid-row: 2/3;
+}
+
+.chat-box {
+   grid-row: 3/9;
+   overflow-y: scroll;
+}
+
+.line-dec {
+    width: 50px;
+    height: 1px;
+    border: 1px solid rgba(245, 245, 245, 0.589);
+    margin-right: 0.2rem;
+}
+
+.aside {
+   grid-column: 2 / 4;
+   grid-row: 1 / 9;
+   border: 1px solid $primary-color;
+   border-radius: 7px;
+   background: #E5E5E5;
+   width: 65%;
+}
+
+.profile-status-box {
+    border: 1px solid lightgray;
+    background: #BA4C4C;
+    margin-left: 3.4rem;
+    margin-right: 0.6rem;
+    border-radius: 10px;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    color: rgba(245, 245, 245, 0.589);
+    font-size: 1.1rem;
+     & span {
+         color: #fff;
+         font-size: 1.2rem;
+         font-weight: bold;
+     }
+}
+
+.status {
+    color: rgb(35, 238, 35);
+}
+
+.status, .location, .country {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-bio {
+    width: 100%;
+    margin:1rem auto;
+}
+
+.profile__textarea {
+    width: 90%;
+    border: none;
+    outline: none;
+    background: #9E5757;
+    color: #fff;
+    border-radius: 7px;
+    resize: none;
+    padding: 0.6rem;
+    margin-left: 3.5rem;
+    border: 1px solid lightgray;
+}
+
+.notefication-container {
+ padding:  1.3rem 3rem;   
+}
+
+.messages__ntf, .post__ntf, .editProfile__ntf, .createEvent__ntf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+     p {
+         color: rgb(214, 210, 210);
+         margin: 1rem;
+         font-size: 1.4rem;
+         font-weight: bold;
+         cursor: pointer;
+     }
+}
+
+.aside {
+    padding: 1.5rem;
+    overflow-y: scroll;
+    width: 100%;
+}
+
+.newComer-foto {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    img {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.comer-container {
+    border: 1px solid black;
+    width: 80%;
+    margin:1rem auto 3rem auto;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.newComer-profile {
+    // border: 1px solid red;
+    height: 190px;
+    padding: 1.5rem;
+    background: #F1E9E9;
+}
+
+.column-flex {
+    display: flex;
+    flex-direction: column;
+    margin:0.5rem 1rem;
+    :nth-child(1) {
+        font-size: 1.4rem;
+        font-weight: bolder;
+        color: rgb(44, 42, 42);
+    }
+    :nth-child(2),:nth-child(3) {
+        font-size: 1.2rem;
+        font-weight: bolder;
+        color: #ba4c4c7b;
+    }
+}
+
+.newComer-text {
+    font-size: 1.2rem;
+    color: rgb(39, 36, 36);
+    line-height: 2rem;
+    background: #fff;
+    border-radius: 7px;
+    padding: 0.5rem;
+}
+
+.btn-profile {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    button {
+        padding: 1rem;
+        width: 100%;
+        border: none;
+        outline: none;
+        background: $secondary-color;
+        color: #fff;
+        font-weight: bold;
+    }
+    :nth-child(1) {
+        border-right: 1px solid #fff;
+    }
+}
