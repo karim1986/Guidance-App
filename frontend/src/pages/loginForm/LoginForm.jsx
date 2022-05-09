@@ -9,6 +9,7 @@ import "./loginForm.scss";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  console.log(navigate);
   const [data, setData] = useState({
     email: "",
     password: "",
