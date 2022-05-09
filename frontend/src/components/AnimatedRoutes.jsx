@@ -4,6 +4,7 @@ import PasswordReset from "../pages/resetPassword/PasswordReset";
 import PrivateHome from "../pages/privateHome/PrivateHome";
 import NewcomerHome from "../pages/newcomerHome/NewcomerHome";
 import NotFound from "../pages/notFound/NotFound";
+import Messenger from "../pages/messenger/Messenger";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -12,6 +13,7 @@ function AnimatedRoutes() {
   return (
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
+        <Route path="/messenger" element={<Messenger />} />
         <Route path="/newcomer-home" element={<NewcomerHome />} />
         <Route path="/privat-home" element={<PrivateHome />} />
         <Route path="/reset" element={<PasswordReset />} />
