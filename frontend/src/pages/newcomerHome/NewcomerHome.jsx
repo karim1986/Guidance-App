@@ -4,6 +4,7 @@ import { AiOutlineEdit, AiOutlineExclamationCircle } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
 import { TiMessages } from "react-icons/ti";
 import { getEvents, getPrivat } from "../../services/fakeservices";
+import Modal from "../../modal/Modal";
 import profile from "../../assets/images/profile.jpg";
 import deco from "../../assets/images/deco.svg";
 import "./newcomerHome.scss";
@@ -11,9 +12,14 @@ import "./newcomerHome.scss";
 const NewcomerHome = () => {
   const [events, setEvent] = useState(getEvents());
   const [privats, setPrivat] = useState(getPrivat());
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
 
   return (
-    <div>
+    <div className="container">
       <div className="newcomerPage-container">
         <div className="grid__container grid__4x2">
           <div className="newcomer-profile-box">
@@ -49,8 +55,9 @@ const NewcomerHome = () => {
               <div className="newcomer-posts add__style">
                 <p>Post</p>
                 <span>
-                  <AiOutlineEdit color="#fff" size={20} />
+                  <AiOutlineEdit color="#fff" size={20} onClick={openModal} />
                 </span>
+                <Modal showModal={showModal} setShowModal={setShowModal} />
               </div>
               <div className="newcomer-events add__style">
                 <p>Create Event</p>
