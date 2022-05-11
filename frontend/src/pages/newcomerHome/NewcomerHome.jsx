@@ -4,7 +4,8 @@ import { AiOutlineEdit, AiOutlineExclamationCircle } from "react-icons/ai";
 import { GiConfirmed } from "react-icons/gi";
 import { TiMessages } from "react-icons/ti";
 import { getEvents, getPrivat } from "../../services/fakeservices";
-import Modal from "../../modal/Modal";
+import Modal from "../../components/postModal/Modal";
+import EventModal from "../../components/eventModal/Modal";
 import profile from "../../assets/images/profile.jpg";
 import deco from "../../assets/images/deco.svg";
 import "./newcomerHome.scss";
@@ -13,9 +14,14 @@ const NewcomerHome = () => {
   const [events, setEvent] = useState(getEvents());
   const [privats, setPrivat] = useState(getPrivat());
   const [showModal, setShowModal] = useState(false);
+  const [showModalTwo, setShowModalTwo] = useState(false);
 
   const openModal = () => {
     setShowModal((prev) => !prev);
+  };
+
+  const openModalTwo = () => {
+    setShowModalTwo((prev) => !prev);
   };
 
   return (
@@ -62,8 +68,16 @@ const NewcomerHome = () => {
               <div className="newcomer-events add__style">
                 <p>Create Event</p>
                 <span>
-                  <BsCalendarEvent color="#fff" size={20} />
+                  <BsCalendarEvent
+                    color="#fff"
+                    size={20}
+                    onClick={openModalTwo}
+                  />
                 </span>
+                <EventModal
+                  showModalTwo={showModalTwo}
+                  setShowModalTwo={setShowModalTwo}
+                />
               </div>
               <div className="newcomer-events add__style">
                 <p>Interested in</p>

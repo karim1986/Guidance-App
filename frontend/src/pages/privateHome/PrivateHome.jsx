@@ -2,12 +2,24 @@ import { BsCircle, BsCalendarEvent } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
 import { AiOutlineEdit } from "react-icons/ai";
 import profile from "../../assets/images/profile.jpg";
+import Modal from "../../components/postModal/Modal";
+import EventModal from "../../components/eventModal/Modal";
 import { getNewComers } from "../../services/fakeservices";
 import { useState } from "react";
 import "./privateHome.scss";
 
 const PrivateHome = () => {
   const [newComers, setNewcomers] = useState(getNewComers());
+  const [showModal, setShowModal] = useState(false);
+  const [showModalTwo, setShowModalTwo] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
+  const openModalTwo = () => {
+    setShowModalTwo((prev) => !prev);
+  };
 
   console.log(newComers);
   return (
@@ -69,20 +81,20 @@ const PrivateHome = () => {
           <div className="post__ntf">
             <p>Post</p>
             <span>
-              <RiShareForwardLine size={20} />
+              <RiShareForwardLine size={20} onClick={openModal} />
             </span>
+            <Modal showModal={showModal} setShowModal={setShowModal} />
           </div>
-          <div className="editProfile__ntf">
-            <p>Edit Profile</p>
-            <span>
-              <AiOutlineEdit size={20} />
-            </span>
-          </div>
+
           <div className="createEvent__ntf">
             <p>Create Event</p>
             <span>
-              <BsCalendarEvent size={20} />
+              <BsCalendarEvent size={20} onClick={openModalTwo} />
             </span>
+            <EventModal
+              showModalTwo={showModalTwo}
+              setShowModalTwo={setShowModalTwo}
+            />
           </div>
         </div>
         <div className="chat-box">
