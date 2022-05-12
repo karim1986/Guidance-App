@@ -10,38 +10,53 @@ const SuggestionsBox = () => {
         <div className="suggestion__list">
           <ul className="suggestion__menu">
             <li>
-              <GiConfirmed size={25} />
-              <a href="https://service.berlin.de/">
-                How to get an appointement with Citzens Offices and read more
-                aboutother services.
+              <GiConfirmed size={15} />
+              <a
+                href="https://service.berlin.de/"
+                target={"_blank"}
+                rel="noreferrer noopener"
+              >
+                Berlin Services
               </a>
             </li>
             <li>
-              <GiConfirmed size={25} />
-              <a href="https://service.berlin.de/" rel="noreferrer noopener">
-                How to get an appointement with Citzens Offices and read more
-                aboutother services.
+              <GiConfirmed size={15} />
+              <a
+                href="https://www.kita-navigator.berlin.de/"
+                target={"_blank"}
+                rel="noreferrer noopener"
+              >
+                Kita-Navigator-Berlin
               </a>
             </li>
             <li>
-              <GiConfirmed size={25} />
-              <a href="https://service.berlin.de/" rel="noreferrer noopener">
-                How to get an appointement with Citzens Offices and read more
-                aboutother services.
+              <GiConfirmed size={15} />
+              <a
+                href="https://www.berlin.de/einwanderung/"
+                target={"_blank"}
+                rel="noreferrer noopener"
+              >
+                Immigration Office (Landesamt für Einwanderung)
               </a>
             </li>
             <li>
-              <GiConfirmed size={25} />
-              <a href="https://service.berlin.de/" rel="noreferrer noopener">
-                How to get an appointement with Citzens Offices and read more
-                aboutother services.
+              <GiConfirmed size={15} />
+              <a
+                href="https://www.doctolib.de/"
+                target={"_blank"}
+                rel="noreferrer noopener"
+              >
+                Doctor's Appointments
               </a>
             </li>
             <li>
-              <GiConfirmed size={25} />
-              <a href="https://service.berlin.de/" rel="noreferrer noopener">
-                How to get an appointement with Citzens Offices and read more
-                aboutother services.
+              <GiConfirmed size={15} />
+              <a
+                href="https://service.berlin.de/dienstleistung/305244/en/"
+                target={"_blank"}
+                rel="noreferrer noopener"
+              >
+                Residence permit for the purpose of studying
               </a>
             </li>
           </ul>

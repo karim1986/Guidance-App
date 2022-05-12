@@ -1,19 +1,30 @@
+import { useState } from "react";
+import TextArea from "./TextArea";
+
 const Post = () => {
+  const [dataArea, setDataArea] = useState({ body: "" });
+
+  const { body } = dataArea;
+
+  const handleChange = ({ currentTarget: input }) => {
+    const details = { ...body };
+    details[input.name] = input.value;
+    setDataArea(details);
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    // call the server .....
+    console.log("submitted");
+  };
+
   return (
     <div className="post__container">
       <div className="post__text">
-        <textarea
-          placeholder="Write your request here..."
-          name=""
-          id=""
-          cols="73"
-          rows="10"
-        ></textarea>
-      </div>
-      <div className="post__submit">
-        <button className="btn btn-secondary submit" type="submit">
-          Post
-        </button>
+        <form onSubmit={handleSubmit}>
+          <TextArea onChange={handleChange} value={body} />
+        </form>
       </div>
     </div>
   );

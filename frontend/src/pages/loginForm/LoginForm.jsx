@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Joi from "joi-browser";
+import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import IntroText from "../../components/intro-text/IntroText";
 import Input from "../../components/common/Input";
@@ -9,7 +9,7 @@ import "./loginForm.scss";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  console.log(navigate);
+
   const [data, setData] = useState({
     email: "",
     password: "",
