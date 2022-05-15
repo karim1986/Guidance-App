@@ -50,6 +50,7 @@ h1,h2,h3,h4 {
   *::-webkit-scrollbar-thumb {
     background-color: $primary-color;
     border-radius: 20px;
+    margin: 10px;
     border: transparent;
     padding: 0.5rem;
   }

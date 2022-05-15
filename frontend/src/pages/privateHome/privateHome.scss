@@ -39,10 +39,20 @@
 }
 
 .logout-bnt {
-    button {
-        background: $primary-color !important;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    display: flex;
+    padding: 1rem;
+    cursor: pointer;
+    color: $secondary-color;
+    font-weight: bolder;
+    span {
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
     }
 }
+
 
 .profile-info {
     display: flex;

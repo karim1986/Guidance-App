@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsCircle, BsCalendarEvent } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineExclamationCircle } from "react-icons/ai";
+import { FiLogOut } from "react-icons/fi";
 import { TiMessages } from "react-icons/ti";
 import profile from "../assets/images/profile.jpg";
 import Modal from "./postModal/Modal";
@@ -20,7 +21,8 @@ const NewcomerBox = () => {
   return (
     <div className="newcomer-profile-box">
       <div className="logout-bnt">
-        <button className="btn btn__logout">Log out</button>
+        <FiLogOut size={15} color="#34475C" />
+        <span>Log out</span>
       </div>
       <div className="guidance-logo">
         <h3>Guidance</h3>
