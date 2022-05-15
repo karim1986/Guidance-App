@@ -3,7 +3,6 @@ import { getNewComers } from "../services/fakeservices";
 
 const PrivatAside = () => {
   const [newComers, setNewcomers] = useState(getNewComers());
-  console.log(newComers);
 
   return (
     <div className="aside aside__profiles">

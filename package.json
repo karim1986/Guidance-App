@@ -11,12 +11,14 @@
   "author": "karim / haythem",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.27.2",
     "colors": "^1.4.0",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
     "icons": "^1.0.0",
     "mongoose": "^6.3.2",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "react-toastify": "^9.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
