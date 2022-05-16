@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Joi from "joi-browser";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Input from "../../components/common/Input";
@@ -9,6 +10,8 @@ import GoBackToLogin from "../../components/common/GoBackToLogin";
 import "./register.scss";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [data, setData] = useState({
     username: "",
     selectedRole: "",
@@ -52,6 +55,18 @@ const Register = () => {
     details[input.name] = input.value;
     setData(details, errors);
   };
+  const sendRequest = async () => {
+    const res = await axios
+      .post("http://localhost:8000/api/signup", {
+        username: username,
+        email: email,
+        password: password,
+        selectedRole: selectedRole,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -59,8 +74,10 @@ const Register = () => {
     const errors = validate();
     setErrors(errors || {});
     if (errors) return;
-    //call the server and navigate the use to different pages
-    console.log("Submitted");
+
+    sendRequest()
+      .then((data) => localStorage.setItem("userId", data.user._id))
+      .then(() => navigate("/"));
   };
 
   return (
@@ -104,7 +121,11 @@ const Register = () => {
             error={errors.password}
             onChange={handleChange}
           />
-          <button disabled={validate()} className="btn btn-primary">
+          <button
+            type="submit"
+            disabled={validate()}
+            className="btn btn-primary"
+          >
             Register
           </button>
         </form>

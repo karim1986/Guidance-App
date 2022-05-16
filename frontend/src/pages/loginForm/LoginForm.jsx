@@ -1,14 +1,18 @@
 import { useState } from "react";
 import Joi from "joi-browser";
 import { motion } from "framer-motion";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import IntroText from "../../components/intro-text/IntroText";
 import Input from "../../components/common/Input";
 import CreateAccount from "../../components/common/CreateAccount";
+import authAction from "../../app/store";
 import "./loginForm.scss";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [data, setData] = useState({
     email: "",
@@ -32,6 +36,17 @@ const LoginForm = () => {
     for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
   };
+  const sendRequest = async () => {
+    const res = await axios
+      .post("http://localhost:8000/api/login", {
+        email: email,
+        password: password,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -40,7 +55,10 @@ const LoginForm = () => {
     setErrors(errors || {});
     if (errors) return;
     //call the server and navigate the use to different pages
-    console.log("Submitted");
+    sendRequest()
+      .then((data) => localStorage.setItem("userId", data.user._id))
+      .then(dispatch(authAction.login()))
+      .then(() => navigate("/user"));
   };
 
   const validateProperty = ({ name, value }) => {

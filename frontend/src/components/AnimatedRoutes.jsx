@@ -1,8 +1,8 @@
 import LoginForm from "../pages/loginForm/LoginForm";
 import Register from "../pages/register/Register";
 import PasswordReset from "../pages/resetPassword/PasswordReset";
-import PrivateHome from "../pages/privateHome/PrivateHome";
-import NewcomerHome from "../pages/newcomerHome/NewcomerHome";
+import Welcome from "./Welcome";
+import Modal from "./eventModal/Modal";
 import NotFound from "../pages/notFound/NotFound";
 import Messenger from "../pages/messenger/Messenger";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -14,8 +14,9 @@ function AnimatedRoutes() {
     <AnimatePresence>
       <Routes location={location} key={location.pathname}>
         <Route path="/messenger" element={<Messenger />} />
-        <Route path="/newcomer-home" element={<NewcomerHome />} />
-        <Route path="/privat-home" element={<PrivateHome />} />
+        <Route path="/user" element={<Welcome />} />
+
+        <Route path="/modal" element={<Modal />} />
         <Route path="/reset" element={<PasswordReset />} />
         <Route path="/register" element={<Register />} />
         <Route path="/notfound" element={<NotFound />} />
