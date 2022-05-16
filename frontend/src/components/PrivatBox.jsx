@@ -1,7 +1,14 @@
+import { useState } from "react";
 import { FiLogOut } from "react-icons/fi";
+import TextArea from "./common/TextArea";
 import profile from "../assets/images/profile.jpg";
 
 function PrivatBox() {
+  const handleChange = () => {};
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+  };
   return (
     <div className="pofile-box">
       <div className="logout-bnt">
@@ -19,7 +26,7 @@ function PrivatBox() {
         <div className="flex-position">
           <div className="profile-status">
             <p>Karim Afettouche</p>
-            <p>Private</p>
+            <p>Coach or Volunteer</p>
           </div>
           <div className="creation-date">
             <p>Joined 27 Apr 2022</p>
@@ -39,15 +46,19 @@ function PrivatBox() {
         </div>
       </div>
       <div className="profile-bio">
-        <textarea
-          className="profile__textarea"
-          name="bio"
-          id=""
-          cols="30"
-          rows="5"
-        >
-          Where I can help...
-        </textarea>
+        <form className="" onSubmit={handleSubmit}>
+          <textarea
+            className="profile__textarea"
+            name="post"
+            placeholder="Post Where and how you can help..."
+            cols="30"
+            rows="5"
+            onChange={handleChange}
+          ></textarea>
+          <button type="submit" className="btn btn-submit">
+            Post
+          </button>
+        </form>
       </div>
     </div>
   );

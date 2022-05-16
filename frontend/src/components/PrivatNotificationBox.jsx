@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BsCircle, BsCalendarEvent } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
+import { AiOutlineExclamationCircle } from "react-icons/ai";
 import Modal from "../components/postModal/Modal";
 import EventModal from "../components/eventModal/Modal";
 
@@ -21,25 +22,31 @@ function PrivatNotificationBox() {
       <div className="messages__ntf">
         <p>Messages</p>
         <span className="absolute-position">
-          <BsCircle size={20} color="#F47060" />
+          <BsCircle size={20} color="#fff" />
         </span>
       </div>
-      <div className="post__ntf">
+      {/* <div className="post__ntf">
         <p>Post</p>
         <span>
           <RiShareForwardLine size={20} onClick={openModal} />
         </span>
         <Modal showModal={showModal} setShowModal={setShowModal} />
-      </div>
+      </div> */}
       <div className="createEvent__ntf">
         <p>Create Event</p>
         <span>
-          <BsCalendarEvent size={20} onClick={openModalTwo} />
+          <BsCalendarEvent color="#fff" size={20} onClick={openModalTwo} />
         </span>
         <EventModal
           showModalTwo={showModalTwo}
           setShowModalTwo={setShowModalTwo}
         />
+      </div>
+      <div className="interessted__in">
+        <p>Interested in</p>
+        <span>
+          <AiOutlineExclamationCircle color="#fff" size={20} />
+        </span>
       </div>
     </div>
   );

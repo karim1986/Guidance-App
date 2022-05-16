@@ -10,7 +10,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(3,  1fr);
-    grid-template-rows: 300px 180px 1fr;
+    grid-template-rows: 320px 120px 1fr;
     gap: 1rem;
 }
 
@@ -18,7 +18,6 @@
     background: $secondary-color;
     border-radius: 7px;
     border: 1px solid $primary-color;
-   
 }
 
 .pofile-box {
@@ -47,6 +46,11 @@
     cursor: pointer;
     color: $secondary-color;
     font-weight: bolder;
+    margin-right: 10px;
+    &:hover {
+        transform: scale(1.1);
+       
+    }
     span {
         margin-left: 0.5rem;
         font-size: 1.2rem;
@@ -99,13 +103,13 @@
     }
 }
 
-.notefication-container {
-   grid-row: 2/3;
-}
-
 .chat-box {
    grid-row: 3/9;
    overflow-y: scroll;
+   background-image: url("../../assets/images/events2.svg");
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: center;
 }
 
 .line-dec {
@@ -154,6 +158,21 @@
 .profile-bio {
     width: 100%;
     margin:1rem auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-submit {
+    display: block;
+    margin-left: 36px;
+    width: 20%;
+    border: none;
+    padding: 0.3rem;
+    border-radius: 7px;
+    background: $primary-color;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .profile__textarea {
@@ -170,19 +189,18 @@
 }
 
 .notefication-container {
- padding:  1.3rem 3rem;   
+ padding:  0.5rem 1.5rem;   
 }
 
-.messages__ntf, .post__ntf, .editProfile__ntf, .createEvent__ntf {
+.messages__ntf, .post__ntf, .interessted__in, .createEvent__ntf {
     display: flex;
     justify-content: space-between;
     align-items: center;
-     p {
-         color: rgb(214, 210, 210);
+    
+    p {
          margin: 1rem;
          font-size: 1.4rem;
          font-weight: bold;
-         cursor: pointer;
      }
 }
 
