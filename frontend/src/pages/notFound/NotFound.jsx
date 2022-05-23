@@ -8,7 +8,7 @@ const NotFound = () => {
     <div className="notfound__container">
       <div className="notfound__content">
         <div className="notfound__text">
-          <h2>Page not Found</h2>
+          <h2>Error!!! Page not Found</h2>
         </div>
         <div className="notfound__image">
           <img src={PageNotFound} alt="" />

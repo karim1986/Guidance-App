@@ -1,12 +1,21 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { getEvents, getPrivat } from "../services/fakeservices";
+import { AiOutlineReload } from "react-icons/ai";
 
 const NewcomerAside = () => {
   const [events, setEvent] = useState(getEvents());
-  const [privats, setPrivat] = useState(getPrivat());
+
+  const { posts } = useSelector((state) => state.posts);
+  const { data } = posts;
+
+  const refreshPage = () => {
+    window.location.reload();
+  };
 
   return (
     <div className="newcomer__aside">
+      <AiOutlineReload onClick={refreshPage} />
       <div className="newcomer__aside__container">
         <div className="newcomer__events__card">
           {events.map((event) => (
@@ -46,60 +55,65 @@ const NewcomerAside = () => {
         </div>
 
         <div className="privat__card">
-          {privats.map((privat) => (
-            <div
-              className="privat__card__container privat-block"
-              key={privat.key}
-            >
-              <div className="privat__card__content">
-                <div className="privat__flex">
-                  <div className="privat__image">
-                    <img src={privat.foto} alt="" />
+          {data &&
+            data
+              .filter((post) => post.creator.selectedRole !== "newcomer")
+              .sort((a, b) => a.createdAt > b.createdAt)
+              .reverse()
+              .map((post) => (
+                <div
+                  className="privat__card__container privat-block"
+                  key={post._id}
+                >
+                  <div className="privat__card__content">
+                    <div className="privat__flex">
+                      <div className="privat__image">
+                        <img src={post.creator.profilePicture} alt="" />
+                      </div>
+                      <div className="privat__info">
+                        <p>{post.creator.username}</p>
+                        <p>{post.creator.selectedRole}</p>
+                      </div>
+                    </div>
+                    <div className="privat__date">
+                      <p>Joined {post.createdAt.split("T").shift()}</p>
+                    </div>
                   </div>
-                  <div className="privat__info">
-                    <p>{privat.name}</p>
-                    <p>{privat.role}</p>
+
+                  <div className="privat__moreInfo">
+                    <div className="status">
+                      <p>Status</p>
+                      <span>online</span>
+                    </div>
+                    <div className="city">
+                      <p>City</p>
+                      <span>Berlin</span>
+                    </div>
+                    <div className="country">
+                      <p>Country</p>
+                      <span>Germany</span>
+                    </div>
+                  </div>
+
+                  <div className="privat__bio">
+                    <div className="btn btn-privat">
+                      <button className="btn-secondary">Contact</button>
+                    </div>
+
+                    <div className="privat__textarea">
+                      <textarea
+                        className="resize__textarea"
+                        name=""
+                        id=""
+                        cols="45"
+                        rows="5"
+                      >
+                        {post.message}
+                      </textarea>
+                    </div>
                   </div>
                 </div>
-                <div className="privat__date">
-                  <p>Joined {privat.date}</p>
-                </div>
-              </div>
-
-              <div className="privat__moreInfo">
-                <div className="status">
-                  <p>Status</p>
-                  <span>{privat.status}</span>
-                </div>
-                <div className="city">
-                  <p>City</p>
-                  <span>{privat.city}</span>
-                </div>
-                <div className="country">
-                  <p>Country</p>
-                  <span>{privat.country}</span>
-                </div>
-              </div>
-
-              <div className="privat__bio">
-                <div className="btn btn-privat">
-                  <button className="btn-secondary">Contact</button>
-                </div>
-
-                <div className="privat__textarea">
-                  <textarea
-                    className="resize__textarea"
-                    name=""
-                    id=""
-                    cols="45"
-                    rows="5"
-                  >
-                    {privat.text}
-                  </textarea>
-                </div>
-              </div>
-            </div>
-          ))}
+              ))}
         </div>
       </div>
     </div>
@@ -107,3 +121,56 @@ const NewcomerAside = () => {
 };
 
 export default NewcomerAside;
+
+/* <div
+className="privat__card__container privat-block"
+key={post._id}
+>
+<div className="privat__card__content">
+  <div className="privat__flex">
+    <div className="privat__image">
+      <img src={post.creator.profilePicture} alt="" />
+    </div>
+    <div className="privat__info">
+      <p>{post.creator.username}</p>
+      <p>{post.creator.selectedRole}</p>
+    </div>
+  </div>
+  <div className="privat__date">
+    <p>Joined {post.creator.createdAt}</p>
+  </div>
+</div>
+
+<div className="privat__moreInfo">
+  <div className="status">
+    <p>Status</p>
+    <span>online</span>
+  </div>
+  <div className="city">
+    <p>City</p>
+    <span>Berlin</span>
+  </div>
+  <div className="country">
+    <p>Country</p>
+    <span>Germany</span>
+  </div>
+</div>
+
+<div className="privat__bio">
+  <div className="btn btn-privat">
+    <button className="btn-secondary">Contact</button>
+  </div>
+
+  <div className="privat__textarea">
+    <textarea
+      className="resize__textarea"
+      name=""
+      id=""
+      cols="45"
+      rows="5"
+    >
+      {post.message}
+    </textarea>
+  </div>
+</div>
+</div> */

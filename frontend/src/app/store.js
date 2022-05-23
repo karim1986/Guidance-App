@@ -1,17 +1,12 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-const authSlice = createSlice({
-  name: "auth",
-  initialState: { isLogged: false },
-  reducers: {
-    login(state) {
-      state.isLogged = true;
-    },
-    logout(state) {
-      state.isLogged = false;
-    },
-  },
-});
-export const authAction = authSlice.actions;
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../features/auth/authSlice";
+import postReducer from "../features/posts/postsSlice";
+import eventReducer from "../features/events/eventsSlice";
+
 export const store = configureStore({
-  reducer: authSlice.reducer,
+  reducer: {
+    auth: authReducer,
+    posts: postReducer,
+    events: eventReducer,
+  },
 });

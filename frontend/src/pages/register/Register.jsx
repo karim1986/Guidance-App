@@ -1,23 +1,43 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Joi from "joi-browser";
-import axios from "axios";
+import FileBase from "react-file-base64";
+import { useSelector, useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { register, reset } from "../../features/auth/authSlice";
 import { motion } from "framer-motion";
 import Input from "../../components/common/Input";
 import DropDownBoxes from "../../components/common/DropDownBoxes";
-import SocialMediaIcons from "../../components/common/SocialMediaIcons";
 import GoBackToLogin from "../../components/common/GoBackToLogin";
+import Spinner from "../../components/common/Spinner";
 import "./register.scss";
 
 const Register = () => {
-  const navigate = useNavigate();
-
   const [data, setData] = useState({
     username: "",
     selectedRole: "",
+    profilePicture: "",
     email: "",
     password: "",
   });
+  const { username, selectedRole, email, password, profilePicture } = data;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (user || isSuccess) {
+      navigate("/users");
+    }
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const [errors, setErrors] = useState({});
 
   const schema = {
@@ -25,9 +45,9 @@ const Register = () => {
     email: Joi.string().email().required().label("Email"),
     password: Joi.string().required().min(5).max(10).label("Password"),
     selectedRole: Joi.string().required(),
+    profilePicture: Joi.string().required(),
   };
 
-  const { username, selectedRole, email, password } = data;
   const options = { abortEarly: false };
 
   const validate = () => {
@@ -55,18 +75,6 @@ const Register = () => {
     details[input.name] = input.value;
     setData(details, errors);
   };
-  const sendRequest = async () => {
-    const res = await axios
-      .post("http://localhost:8000/api/signup", {
-        username: username,
-        email: email,
-        password: password,
-        selectedRole: selectedRole,
-      })
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    return data;
-  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -75,10 +83,21 @@ const Register = () => {
     setErrors(errors || {});
     if (errors) return;
 
-    sendRequest()
-      .then((data) => localStorage.setItem("userId", data.user._id))
-      .then(() => navigate("/"));
+    //call the server and navigate the use to different pages
+    const userData = {
+      username,
+      email,
+      password,
+      selectedRole,
+      profilePicture,
+    };
+
+    dispatch(register(userData));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <motion.div
@@ -93,6 +112,18 @@ const Register = () => {
           </div>
           <div className="register-text">
             <p>Sign up and make newcomers's life easier in your city </p>
+          </div>
+          <div className="load_foto">
+            <FileBase
+              className="input__file"
+              name="file"
+              id="file"
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) =>
+                setData({ ...data, profilePicture: base64 })
+              }
+            />
           </div>
           {/* <SocialMediaIcons /> */}
           <div className="form-group">

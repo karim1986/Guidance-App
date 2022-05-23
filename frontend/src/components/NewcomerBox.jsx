@@ -1,15 +1,31 @@
 import { useState } from "react";
-import { BsCircle, BsCalendarEvent } from "react-icons/bs";
+import { BsCalendarEvent } from "react-icons/bs";
 import { AiOutlineEdit, AiOutlineExclamationCircle } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../features/auth/authSlice";
 import { FiLogOut } from "react-icons/fi";
 import { TiMessages } from "react-icons/ti";
-import profile from "../assets/images/profile.jpg";
 import Modal from "./postModal/Modal";
 import EventModal from "../components/eventModal/Modal";
 
 const NewcomerBox = () => {
+  const [data, setData] = useState();
   const [showModal, setShowModal] = useState(false);
   const [showModalTwo, setShowModalTwo] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
+
+  const { username, selectedRole, profilePicture } = user;
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -20,7 +36,7 @@ const NewcomerBox = () => {
   };
   return (
     <div className="newcomer-profile-box">
-      <div className="logout-bnt">
+      <div className="logout-bnt" onClick={onLogout}>
         <FiLogOut size={15} color="#34475C" />
         <span>Log out</span>
       </div>
@@ -29,14 +45,14 @@ const NewcomerBox = () => {
       </div>
       <div className="newcomer-profile">
         <div className="newComer__profile__image">
-          <img src={profile} alt="" />
+          <img src={profilePicture} alt="" />
         </div>
         <div className="flex-column">
           <div className="newComer__profile__name">
-            <p>Karim Afettouche</p>
+            <p>{user && username}</p>
           </div>
           <div className="newComer__profile_status">
-            <p>Newcomer</p>
+            <p>{selectedRole}</p>
           </div>
           <div className="newComer__city">
             <p>Berlin</p>

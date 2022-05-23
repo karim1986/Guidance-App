@@ -1,26 +1,24 @@
-import { useState } from "react";
-import { FaCameraRetro } from "react-icons/fa";
+// import { useState } from "react";
+// import FileBase from "react-file-base64";
+// import { FaCameraRetro } from "react-icons/fa";
 
-const UploadFoto = () => {
-  const [selectedFile, setSelectedFile] = useState(false);
-  const handleChange = (evt) => {
-    setSelectedFile(evt.taget.files[0]);
-  };
+// const UploadFoto = ({ image }) => {
+//   const [data, setData] = useState();
+//   return (
+//     <div className="upload__foto">
+//       <div className="load_foto">
+//         <FileBase
+//           className="input__file"
+//           name={image}
+//           value={image}
+//           id="file"
+//           type="file"
+//           multiple={false}
+//           onDone={({ base64 }) => setData({ ...data, profilePicture: base64 })}
+//         />
+//       </div>
+//     </div>
+//   );
+// };
 
-  return (
-    <div className="upload__foto">
-      <FaCameraRetro className="svg__camera" size={25} color="#f3796b" />
-      <label for="inputTag">
-        Select Image
-        <input
-          onChange={handleChange}
-          name="inputTags"
-          type="file"
-          accept="image/png, image/jpg, image/gif, image/jpeg"
-        />
-      </label>
-    </div>
-  );
-};
-
-export default UploadFoto;
+// export default UploadFoto;

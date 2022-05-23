@@ -1,24 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Joi from "joi-browser";
 import { motion } from "framer-motion";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { login, reset } from "../../features/auth/authSlice";
+import { toast } from "react-toastify";
+import Spinner from "../../components/common/Spinner";
 import IntroText from "../../components/intro-text/IntroText";
 import Input from "../../components/common/Input";
 import CreateAccount from "../../components/common/CreateAccount";
-import authAction from "../../app/store";
 import "./loginForm.scss";
 
 const LoginForm = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
   const [data, setData] = useState({
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState({});
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user, isLoading, isSuccess, isError, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+
+    if (user || isSuccess) {
+      navigate("/users");
+    }
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
 
   const schema = {
     email: Joi.string().email().required().label("Email"),
@@ -36,17 +51,6 @@ const LoginForm = () => {
     for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
   };
-  const sendRequest = async () => {
-    const res = await axios
-      .post("http://localhost:8000/api/login", {
-        email: email,
-        password: password,
-      })
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    console.log(data);
-    return data;
-  };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -54,11 +58,14 @@ const LoginForm = () => {
     const errors = validate();
     setErrors(errors || {});
     if (errors) return;
+
     //call the server and navigate the use to different pages
-    sendRequest()
-      .then((data) => localStorage.setItem("userId", data.user._id))
-      .then(dispatch(authAction.login()))
-      .then(() => navigate("/user"));
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData));
   };
 
   const validateProperty = ({ name, value }) => {
@@ -77,6 +84,10 @@ const LoginForm = () => {
     details[input.name] = input.value;
     setData(details, errors);
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>

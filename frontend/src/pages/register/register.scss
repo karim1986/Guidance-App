@@ -40,12 +40,30 @@
 }
 
 .form-group {
+
     select {
         width: 90%;
         margin: auto;
         padding: 1.4rem;
         border: 1px solid lightgray;
     }
+}
+
+.load_foto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input  {
+       border: 1px solid lightgray;
+       padding: 1.5rem;
+       border-radius: 7px;
+       color: $primary-color;
+       background-image: url("../../assets/images/image.webp");
+       background-position: center;
+       background-size: cover;
+       background-repeat: no-repeat;
+       cursor: pointer;
+    }  
 }
 
 .register-logo, .register-text {
