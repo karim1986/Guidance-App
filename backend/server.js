@@ -1,5 +1,6 @@
 const express = require("express");
 const colors = require("colors");
+const cors = require("cors");
 const morgan = require("morgan");
 const dotenv = require("dotenv").config();
 const connectDB = require("./config/db");
@@ -15,6 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/posts", require("./routes/postsRoutes"));
 app.use("/api/event", require("./routes/eventRoutes"));
+app.use("/api/event/interesstedEvent", require("./routes/eventRoutes"));
+
+app.use(cors({ origin: "http://localhost:3000" }));
 
 app.use(errorHandler);
 

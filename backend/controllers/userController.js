@@ -7,7 +7,14 @@ const User = require("../models/userModel");
 //@route    Post /api/users
 //access    Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { username, email, password, selectedRole, profilePicture } = req.body;
+  const {
+    username,
+    email,
+    password,
+    selectedRole,
+    profilePicture,
+    interesstedIn,
+  } = req.body;
 
   if (!username || !email || !password || !selectedRole || !profilePicture) {
     res.status(400);
@@ -32,6 +39,7 @@ const registerUser = asyncHandler(async (req, res) => {
     password: hashedPassword,
     selectedRole,
     profilePicture,
+    interesstedIn,
   });
 
   if (user) {
@@ -41,6 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
       email: user.email,
       selectedRole: user.selectedRole,
       profilePicture: user.profilePicture,
+      interesstedIn: user.interesstedIn,
       token: generateToken(user._id),
     });
   } else {
@@ -65,6 +74,7 @@ const LoginUser = asyncHandler(async (req, res) => {
       selectedRole: user.selectedRole,
       profilePicture: user.profilePicture,
       createdAt: user.createdAt,
+      interesstedIn: user.interesstedIn,
       token: generateToken(user._id),
     });
   } else {

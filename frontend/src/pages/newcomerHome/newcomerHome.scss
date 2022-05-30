@@ -2,6 +2,7 @@
 
 //**** home page global styling ****
 .container {
+    
     height: 100vh;
     width: 100%;
     display: flex;
@@ -29,42 +30,120 @@
     position: relative;
     grid-column: 1 / 2;
     padding: 1.5rem;
-    background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
-    border-radius: 7px;
-    border: 1px solid $secondary-color;
+    background-image: $newComer-background;
+    border-radius: 15px;
 }
 
 .logout-bnt {
     position: absolute;
-    top: 0px;
+    border: 1px solid $primary-color;
+    border-radius: 45px;
+    top: 10px;
     right: 10px;
     display: flex;
-    padding: 1rem;
+    padding: 0.5rem;
+    margin-top: 10px;
     cursor: pointer;
-    color: $secondary-color;
     font-weight: bolder;
+
+    &:hover {
+        box-shadow: 1px 1px 6px 1px $primary-color;
+    }
+
     span {
-        margin-left: 0.5rem;
-        font-size: 1.2rem;
+        margin-left:0.5rem;
+        font-size: 0.9rem;
         color: #fff;
     }
 }
 
 .newComer__profile__image {
     margin: 0.6rem;
+
     img {
         width: 80px;
         height: 80px;
-        border-radius: 10%;
+        border-radius: 50%;
         object-fit: cover;
-        border: 2px solid #fff;
         margin-right: 0.8rem;
+        border: 1px solid lightgray;
     }
 }
 
 .newcomer-profile {
+    width: 93%;
+    margin: auto;
     margin-bottom: 0.9rem;
     display: flex;
+}
+
+.line__deco {
+    width: 7%;
+    height: 3px;
+    background-color: $primary-color;
+    position: absolute;
+    left: 0;
+    bottom: 55%;
+    border-radius: 7px;
+}
+
+.liner__deco__two {
+    width: 8%;
+    height: 3px;
+    background-color: $primary-color;
+    position: absolute;
+    right: 0;
+    bottom: 27%;
+    border-radius: 7px;
+}
+
+.newcomer-messages {
+    
+    &:hover {
+        p {
+            transform: translateY(-1.5px);
+            transition: all 0.1s ease-in-out;
+        }
+    }
+}
+
+.newcomer-posts {
+    
+    &:hover {
+        p {
+            transform: translateY(-1.5px);
+            transition: all 0.1s ease-in-out;
+        }
+    }
+}
+
+.newcomer-events {
+    &:hover {
+        p {
+            transform: translateY(-1.5px);
+            transition: all 0.1s ease-in-out;
+        }
+    }
+}
+
+.newcomer-events {
+    
+    &:hover {
+        p {
+            transform: translateY(-1.5px);
+            transition: all 0.1s ease-in-out;
+        }
+    }
+}
+
+.icon__background {
+    border: 1px solid $primary-color;
+    border-radius: 50%;
+    background: rgba(250, 249, 249, 0.931);
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+   
 }
 
 .flex-column{
@@ -75,15 +154,15 @@
 
 .newComer__profile__name {
     p {
-        color: #fff;
+        color: rgb(229, 226, 226);
         font-weight: bold;
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         margin-bottom: 0.3rem;
     }
 }
 
 .newComer__profile_status, .newComer__city {
-    color: #34475c9e;
+    color: #e26456be;
     font-weight: bold;
     font-size: 1.3rem;
 }
@@ -96,7 +175,6 @@
 .add__style {
     height: 2rem;
     color: rgba(255, 255, 255, 0.735);
-    font-weight: bold;
     font-size: 1.4rem;
     margin-bottom: 1rem;
     display: flex;
@@ -104,11 +182,12 @@
     align-items: center;
     flex-direction: column;
     margin-top: 2rem;
+    position: relative;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: all 0.2s;
 
     &:hover {
-        color: #fff;
+        color: $primary-color;
     }
 
     span {
@@ -119,29 +198,31 @@
 // **** search box component styling ****
 
 .search__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 1rem;
-    background: $secondary-color;
+    background-image: $newComer-background;
     grid-row: 2 / 3;
-    border-radius: 7px;
-    border: 1px solid $secondary-color;
+    border-radius: 15px;
 }
 
 .search {
     padding: 1.2rem;
-    width: 90%;
+    width: 40%;
     background:  #fff;
     border: none;
     outline: none;
     border-radius: 7px;
     &::placeholder {
-        color: rgba(58, 54, 54, 0.642);
+        color: rgba(37, 42, 50, 0.642);
     }
 }
 
 select {
-  padding: 0.4rem;
+  padding: 1.1rem;
   border-radius: 7px;
-  margin: 0.2rem;
+  margin: 0.4rem;
   border: none;
   outline: none;
   background: #fff;
@@ -152,14 +233,14 @@ select {
 
 .suggestions__box {
     padding: 1.5rem;
-    background: $secondary-color;
-    border-radius: 7px;
-    border: 1px solid $primary-color;
+    background-image: $newComer-background;
+    border-radius: 15px;
     grid-row: 3 / 5;
     overflow-y: scroll;
 }
 
 .suggestion__title {
+    
     h3 {
         color: #fff;
         text-align: center;
@@ -167,6 +248,8 @@ select {
 }
 
 .suggestion__menu {
+    width: 90%;
+    margin: auto;
     li {
         display: flex;
         align-items: center;
@@ -174,20 +257,19 @@ select {
     a {
         color: rgba(246, 245, 245, 0.737);
         margin: 1rem 0;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
     svg {
-        margin-right: 5px;
-        color: rgb(23, 196, 23);
+        margin-right: 10px;
+        color: $primary-color;
     }
 }
 
 // **** chat box component styling ****
 .chat__box{
     // background-color: $secondary-color;
-    border-radius: 7px;
+    border-radius: 15px;
     border: 1px solid $primary-color;
-    overflow-y: scroll;
     grid-row: 5/9; 
     background-image: url("../../assets/images/events.svg");
     background-repeat: no-repeat;
@@ -198,80 +280,121 @@ select {
 // **** Aside box component styling *****
 .newcomer__aside{
     padding: 1.5rem;
-    border: 1px solid $secondary-color;
     border-radius: 7px;
     grid-column: 2 / -1;
     grid-row: 1 / 9;
     overflow-y: scroll;
+    display: flex;
+    justify-content: space-between;
 }
 
 // **** Event components styling *****
 
-.event__container, .privat__card__container {
-    width: 80%;
+.event__container {
+    width: 90%;
+    height: 400px;
     margin: 2rem auto;
     border-radius: 7px;
     overflow: hidden;
-    border: 1px solid $primary-color;
+    border: 0.5px solid lightslategray;
+    background-color: rgba(246, 230, 230, 0.767);
+    cursor: pointer;
+}
+
+.newcomer__events__card {
+    width: 65rem;
+    height: 880px;
+}
+
+.event__description {
+    h3 {
+        color: $primary-color;
+    }
 }
 
 .event__content {
     width: 100%;
-    background: #F0F0F0;
 }
 
 .event__image {
     img {
         width: 100%;
-        max-height: 100px;
+        height: 220px;
         object-fit: cover;
     }
 }
 
-.event__header {
-    h3 {
-        text-align: center;
-        font-family: montecarlo;
-        font-size: 3rem;
-        color: $secondary-color;
-    }
-}
-
-.event__image {
-    img {
-        width: 100%;
-        max-height: 180px;
-        object-fit: cover;
-    }
-}
-
-.event {
+.date__time__flex {
     display: flex;
-   width: 80%;
-   margin: auto;
-   h4 {
-       color: $primary-color;
-       margin-right: 1rem;
-       font-size: 1.4rem;
-       font-weight: 800;
-       text-decoration: underline;
-   }
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $secondary-color;
+    & p:nth-child(1) {
+        margin-right: 1rem;
+    }
+}
 
-   span {
-       font-weight: 800;
-       font-size: 1.3rem;
-       color: $secondary-color;
+.event__image {
+   
+    img {
+        width: 100%;
+        max-height: 350px;
+        object-fit: cover;
+    }
+}
 
-   }
+.event__date {
+    border-right: 2px solid gray;
+    color: $secondary-color;
+}
+
+.event__time {
+    margin-left: 1rem;
+}
+
+.event__address {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $secondary-color;
+    p {
+        margin-left: 1rem;
+    }
 }
 
 .event__menu {
     padding: 1rem;
+    margin: 2rem;
 }
 
 .btn-profile {
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+   
     button {
         letter-spacing: 0.1rem;
+        padding: 0.8rem;
+        border: none;
+        border-radius: 999px;
+        background: none;
+        font-weight: bold;
+    }
+}
+
+.btn__flex__event {
+    display: flex;
+    align-items: center;
+    margin: 0rem 2rem;
+}
+
+.interessted--btn, .not--interessted--btn {
+   
+    &:hover {
+        transform: scale(1.1);
     }
 }
 

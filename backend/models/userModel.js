@@ -25,6 +25,10 @@ const userSchema = mongoose.Schema({
     default: "",
   },
 
+  interesstedIn: {
+    type: Array,
+  },
+
   createdAt: {
     type: Date,
     default: Date.now,

@@ -39,7 +39,7 @@ const interesstedEvent = async (req, res) => {
     event = await Event.findByIdAndUpdate(
       eventId,
       {
-        $push: { interested: user },
+        $push: { interesstedIn: user },
       },
       { new: true }
     ).populate({ path: "user", select: "username" });

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { BsCircle, BsCalendarEvent } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
@@ -8,6 +9,8 @@ import EventModal from "../components/eventModal/Modal";
 function PrivatNotificationBox() {
   const [showModal, setShowModal] = useState(false);
   const [showModalTwo, setShowModalTwo] = useState(false);
+
+  const { user } = useSelector((state) => state.auth);
 
   const openModal = () => {
     setShowModal((prev) => !prev);
@@ -44,9 +47,7 @@ function PrivatNotificationBox() {
       </div>
       <div className="interessted__in">
         <p>Interested in</p>
-        <span>
-          <AiOutlineExclamationCircle color="#fff" size={20} />
-        </span>
+        <span> Events</span>
       </div>
     </div>
   );

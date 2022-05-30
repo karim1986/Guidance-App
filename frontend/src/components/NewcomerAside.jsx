@@ -1,13 +1,30 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { motion, AnimatePresence } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
 import { getEvents, getPrivat } from "../services/fakeservices";
+import {
+  interesstedEvents,
+  resetInteressted,
+} from "../features/interessted/interesstedSlice";
 import { AiOutlineReload } from "react-icons/ai";
+import { GoLocation } from "react-icons/go";
+import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const NewcomerAside = () => {
-  const [events, setEvent] = useState(getEvents());
+  // const [event, setEvent] = useState(getEvents());
+  const { user } = useSelector((state) => state.auth);
 
   const { posts } = useSelector((state) => state.posts);
   const { data } = posts;
+
+  const { events } = useSelector((state) => state.events);
+  const { data: files } = events;
+
+  const dispatch = useDispatch();
+
+  const getInterEvents = (eventId, interesstedIn) => {
+    dispatch(interesstedEvents({ eventId, interesstedIn: user._id }));
+  };
 
   const refreshPage = () => {
     window.location.reload();
@@ -15,46 +32,60 @@ const NewcomerAside = () => {
 
   return (
     <div className="newcomer__aside">
-      <AiOutlineReload onClick={refreshPage} />
       <div className="newcomer__aside__container">
         <div className="newcomer__events__card">
-          {events.map((event) => (
-            <div className="event__container" key={event._id}>
-              <div className="event__content">
-                <div className="event__image">
-                  <img src={event.foto} alt="" />
-                </div>
-                <div className="event__header">
-                  <h3>Event</h3>
-                </div>
-                <div className="event__menu">
-                  <div className="event event__date">
-                    <h4>Date:</h4>
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="event event__date">
-                    <h4>Time:</h4>
-                    <span>{event.time}</span>
-                  </div>
-                  <div className="event event__address">
-                    <h4>Address:</h4>
-                    <span>{event.adress}</span>
-                  </div>
-                  <div className="event event__description">
-                    <h4>Description: </h4>
-                    <span>{event.description}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="btn btn-profile">
-                <button>Interested</button>
-                <button>Not Interested</button>
-              </div>
-            </div>
-          ))}
+          <AnimatePresence>
+            {files &&
+              files
+                .map((event, i) => (
+                  <motion.div
+                    className="event__container"
+                    key={event._id}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: i * 0.5 }}
+                    custom={i}
+                  >
+                    <div className="event__image">
+                      <img src={event.profilePicture} alt="event picture" />
+                    </div>
+                    <div className="event__content">
+                      <div className="event__menu">
+                        <div className="date__time__flex">
+                          <div className="event event__date">
+                            <p>{event.date}</p>
+                          </div>
+                          <div className="event event__time">
+                            <p>{event.time}</p>
+                          </div>
+                        </div>
+                        <div className="event event__description">
+                          <h3>{event.description}</h3>
+                        </div>
+                        <div className="event event__address">
+                          <GoLocation color="#34475C" size={18} />
+                          <p>{event.address}</p>
+                        </div>
+                      </div>
+                      <div className="btn btn-profile">
+                        <div className="btn__flex__event interessted--btn">
+                          <AiOutlineCheck />
+                          <button onClick={() => getInterEvents(event._id)}>
+                            Interested
+                          </button>
+                        </div>
+                        <div className="btn__flex__event not--interessted--btn">
+                          <AiOutlineClose />
+                          <button>Not interessted</button>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))
+                .reverse()}
+          </AnimatePresence>
         </div>
-
-        <div className="privat__card">
+        {/* <div className="privat__card">
           {data &&
             data
               .filter((post) => post.creator.selectedRole !== "newcomer")
@@ -114,7 +145,10 @@ const NewcomerAside = () => {
                   </div>
                 </div>
               ))}
-        </div>
+        </div> */}
+      </div>
+      <div className="navigator__aside">
+        <AiOutlineReload onClick={refreshPage} />
       </div>
     </div>
   );

@@ -30,7 +30,7 @@ const Dashboard = () => {
   );
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      console.log(messageP);
     }
 
     dispatch(getPosts());
@@ -40,12 +40,10 @@ const Dashboard = () => {
     };
   }, [isErrorP, messageP]);
 
-  const { events, isLoadingE, isErrorE, messageE } = useSelector(
-    (state) => state.events
-  );
+  const { isErrorE, messageE } = useSelector((state) => state.events);
   useEffect(() => {
-    if (isError) {
-      console.log(message);
+    if (isErrorE) {
+      console.log(messageE);
     }
 
     dispatch(getEvents());
@@ -55,8 +53,12 @@ const Dashboard = () => {
     };
   }, [isErrorE, messageE]);
 
+  const { interesstedIn, isErrorI, messageI } = useSelector(
+    (state) => state.interesstedIn
+  );
+
   if (isSuccess || user) {
-    if (user?.selectedRole === "coach" || user?.selectedRole === "volunteer") {
+    if (user?.selectedRole !== "newcomer") {
       navigatedPage = <PrivateHome />;
     } else {
       navigatedPage = <NewcomerHome />;

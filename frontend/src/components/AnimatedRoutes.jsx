@@ -19,9 +19,6 @@ function AnimatedRoutes() {
         <Route path="/modal" element={<Modal />} />
         <Route path="/reset" element={<PasswordReset />} />
         <Route path="/users" element={<Dashboard />} />
-
-        {/* <Route path="/newcomer" element={<NewcomerHome />} />
-        <Route path="/privat" element={<PrivateHome />} /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/notfound" element={<NotFound />} />
         <Route path="/*" element={<NotFound />} />

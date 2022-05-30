@@ -4,16 +4,15 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { createPost } from "../features/posts/postsSlice";
 import { FiLogOut } from "react-icons/fi";
-import TextArea from "./common/TextArea";
-import profile from "../assets/images/profile.jpg";
 
 function PrivatBox() {
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.auth);
-  const { createdAt, profilePicture, selectedRole, username } = user;
+  console.log(user);
 
   const onLogout = () => {
     dispatch(logout());
@@ -44,15 +43,15 @@ function PrivatBox() {
       <div className="profile-info">
         <div className="line-dec"></div>
         <div className="profile-image">
-          <img src={profilePicture} alt="profile image" />
+          <img src={user && user.profilePicture} alt="profile image" />
         </div>
         <div className="flex-position">
           <div className="profile-status">
-            <p>{username}</p>
-            <p>{selectedRole}</p>
+            <p>{user && user.username}</p>
+            <p>{user && user.selectedRole}</p>
           </div>
           <div className="creation-date">
-            <p>Joined {createdAt && createdAt.split("T").shift()}</p>
+            {/* <p>Joined {user.createdAt.split("T").shift()}</p> */}
           </div>
         </div>
       </div>
