@@ -25,23 +25,23 @@ const NewcomerAside = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const getInterEvents = (eventId, user) => {
-    dispatch(interesstedEvents({ eventId, user: user._id }));
-  };
+  // const getInterEvents = (eventId, user) => {
+  //   dispatch(interesstedEvents({ eventId, user: user._id }));
+  // };
   // useEffect(() => {
   //   sendInterstedRequset();
   // }, []);
 
   const sendInterstedRequset = async (id) => {
-    const res = await axios.put(
-      "http://localhost:2300/api/event/interesstedEvent",
-      {
+    const res = await axios
+
+      .put("http://localhost:2300/api/event/interesstedEvent", {
         eventId: id,
         user: user._id,
-      }
-    );
-    console.log(res.data).catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
     const data = await res.data;
+
     return data;
   };
 
@@ -53,7 +53,7 @@ const NewcomerAside = () => {
       })
       .catch((error) => console.log(error));
     const data = await res.data;
-    console.log(data);
+
     return data;
   };
 

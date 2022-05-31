@@ -9,8 +9,7 @@ import { logout, reset } from "../features/auth/authSlice";
 import Modal from "./postModal/Modal";
 import EventModal from "../components/eventModal/Modal";
 
-const NewcomerBox = () => {
-  const [data, setData] = useState();
+const NewcomerBox = ({ counter }) => {
   const [showModal, setShowModal] = useState(false);
   const [showModalTwo, setShowModalTwo] = useState(false);
 
@@ -88,9 +87,8 @@ const NewcomerBox = () => {
         </div>
         <div className="newcomer-events add__style">
           <p>Interested in</p>
-          <span className="icon__background">
-            <AiOutlineExclamationCircle color="#000" size={20} />
-          </span>
+          {counter}
+          {/* <span className="icon__background">{count}</span> */}
         </div>
       </div>
       <div className="liner__deco__two"></div>
