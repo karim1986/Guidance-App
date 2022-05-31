@@ -97,8 +97,23 @@ const generateToken = (id) => {
   });
 };
 
+const getAnotherUser = async (req, res, next) => {
+  const id = req.params.id;
+  let user;
+  try {
+    user = await User.findById(id);
+  } catch (error) {
+    return console.log(error);
+  }
+  if (!user) {
+    return res.status(404).json({ message: "no user found" });
+  }
+  return res.status(200).json({ user });
+};
+
 module.exports = {
   registerUser,
   LoginUser,
+  getAnotherUser,
   getMe,
 };

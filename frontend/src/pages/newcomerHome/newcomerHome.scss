@@ -284,8 +284,14 @@ select {
     grid-column: 2 / -1;
     grid-row: 1 / 9;
     overflow-y: scroll;
-    display: flex;
-    justify-content: space-between;
+    // display: flex;
+    // justify-content: space-between;
+    // border: 1px solid black;
+}
+
+.position__fixed {
+    position: fixed;
+    left: 0;
 }
 
 // **** Event components styling *****
@@ -301,10 +307,10 @@ select {
     cursor: pointer;
 }
 
-.newcomer__events__card {
-    width: 65rem;
-    height: 880px;
-}
+// .newcomer__events__card {
+//     // width: 65rem;
+//     // height: 880px;
+// }
 
 .event__description {
     h3 {

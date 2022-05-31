@@ -41,7 +41,7 @@ export const interesstedSlice = createSlice({
       .addCase(interesstedEvents.fulfilled, (state, action) => {
         state.isLoadingI = false;
         state.isSuccessI = true;
-        state.interesstedIn.push(action.payload);
+        // state.interesstedIn.push(action.payload);
       })
       .addCase(interesstedEvents.rejected, (state, action) => {
         state.isLoadingI = false;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { BsCircle, BsCalendarEvent } from "react-icons/bs";
 import { RiShareForwardLine } from "react-icons/ri";
@@ -12,6 +13,8 @@ function PrivatNotificationBox() {
 
   const { user } = useSelector((state) => state.auth);
 
+  const navigate = useNavigate();
+
   const openModal = () => {
     setShowModal((prev) => !prev);
   };
@@ -22,7 +25,7 @@ function PrivatNotificationBox() {
 
   return (
     <div className="notefication-container">
-      <div className="messages__ntf">
+      <div className="messages__ntf" onClick={() => navigate("/messenger")}>
         <p>Messages</p>
         <span className="absolute-position">
           <BsCircle size={20} color="#fff" />

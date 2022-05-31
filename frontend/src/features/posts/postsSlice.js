@@ -39,7 +39,7 @@ export const getPosts = createAsyncThunk(
         (error.response &&
           error.response.data &&
           error.response.data.message) ||
-        error.messageP ||
+        error.message ||
         error.toString();
       return thunkAPI.rejectWithValue(message);
     }

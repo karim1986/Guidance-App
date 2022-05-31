@@ -18,8 +18,7 @@ const NewcomerBox = () => {
   const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
-  // const { profilePicture, selectedRole, username } = user;
-  // console.log(profilePicture, selectedRole, username);
+  const { profilePicture, selectedRole, username } = user;
 
   const onLogout = () => {
     dispatch(logout());
@@ -46,14 +45,14 @@ const NewcomerBox = () => {
       <div className="newcomer-profile">
         <div className="newComer__profile__image">
           <div className="line__deco"></div>
-          <img src={user && user.profilePicture} alt="" />
+          <img src={user && profilePicture} alt="" />
         </div>
         <div className="flex-column">
           <div className="newComer__profile__name">
-            <p>{user.username}</p>
+            <p>{username}</p>
           </div>
           <div className="newComer__profile_status">
-            <p>{user.selectedRole}</p>
+            <p>{selectedRole}</p>
           </div>
           <div className="newComer__city">
             <p>Berlin</p>
@@ -61,7 +60,10 @@ const NewcomerBox = () => {
         </div>
       </div>
       <div className="profile__functionalties">
-        <div className="newcomer-messages add__style">
+        <div
+          className="newcomer-messages add__style"
+          onClick={() => navigate("/messenger")}
+        >
           <p>Messages</p>
           <span className="icon__background">
             <TiMessages color="#000" size={20} />

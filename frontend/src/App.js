@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="container">
+        <div className="app__container">
           <AnimatedRoutes />
         </div>
       </Router>

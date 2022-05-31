@@ -1,17 +1,15 @@
-import Messager from "../../assets/images/messager.jpg";
+import { useSelector } from "react-redux";
+import { format } from "timeago.js";
 import "./message.scss";
 
-const Message = ({ own }) => {
+const Message = ({ message, own }) => {
+  const { user } = useSelector((state) => state.auth);
   return (
     <div className={own ? "message own" : "message"}>
       <div className="message__top">
-        <img className="message__image" src={Messager} alt="messager" />
-        <p className="message__text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-          voluptatibus magni nesciunt ea cupiditate consequatur veritatis .
-        </p>
+        <p className="message__text">{message.text}</p>
       </div>
-      <div className="message__bottom">1 hour ago</div>
+      <div className="message__bottom">{format(message.createdAt)}</div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { createPost } from "../../features/posts/postsSlice";
 import postImg from "../../assets/images/post.svg";
 
 const Post = () => {
-  const [text, setText] = useState();
+  const [message, setMessage] = useState();
 
   const dispatch = useDispatch();
 
@@ -14,12 +14,12 @@ const Post = () => {
     evt.preventDefault();
 
     // call the server .....
-    dispatch(createPost({ text, creator: user._id }));
-    setText(" ");
+    dispatch(createPost({ message, creator: user._id }));
+    setMessage(" ");
   };
 
-  const resetText = () => {
-    setText(" ");
+  const resetMessage = () => {
+    setMessage(" ");
   };
 
   return (
@@ -36,15 +36,19 @@ const Post = () => {
               type="text"
               name="text"
               id="text"
-              value={text}
-              onChange={(evt) => setText(evt.target.value)}
+              value={message}
+              onChange={(evt) => setMessage(evt.target.value)}
             />
           </div>
           <div className="post__submit">
             <button className="btn btn-secondary submit" type="submit">
               Post
             </button>
-            <button onClick={resetText} type="button" className="btn-secondary">
+            <button
+              onClick={resetMessage}
+              type="button"
+              className="btn-secondary"
+            >
               Reset
             </button>
           </div>

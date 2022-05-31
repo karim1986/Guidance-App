@@ -1,34 +1,43 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineReload } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 
 const PrivatAside = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const { posts } = useSelector((state) => state.posts);
   const { data } = posts;
+  console.log(data);
 
   const { events } = useSelector((state) => state.events);
   const { data: files } = events;
 
   const { user } = useSelector((state) => state.auth);
 
-  // console.log(user);
-
-  // const sendInterstedRequset = async (id) => {
-  //   const res = await axios
-  //     .put("http://localhost:2300/api/event/interesstedEvent", {
-  //       eventId: id,
-  //       user: user._id,
-  //     })
-  //     .catch((err) => console.log(err));
-  //   const data = await res.data;
-  //   return data;
-  // };
-
   const refreshPage = () => {
     window.location.reload();
+  };
+
+  const postConversation = async (userId) => {
+    const res = await axios
+      .post("http://localhost:2300/api/conversation", {
+        senderId: user._id,
+        receiverId: userId,
+      })
+      .catch((error) => console.log(error));
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
+
+  const handleConversation = (userId) => {
+    postConversation(userId)
+      .then((data) => console.log(data))
+      .then(navigate("/messenger"));
   };
 
   return (
@@ -55,7 +64,9 @@ const PrivatAside = () => {
                 </div>
               </div>
               <div className="btn btn-profile">
-                <button>Contact</button>
+                <button onClick={() => handleConversation(post.creator._id)}>
+                  Contact
+                </button>
                 <button>I can't help</button>
               </div>
             </div>

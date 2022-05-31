@@ -26,5 +26,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karim1986/Guidance-app.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/karim1986/Guidance-app/issues"
+  },
+  "homepage": "https://github.com/karim1986/Guidance-app#readme"
 }

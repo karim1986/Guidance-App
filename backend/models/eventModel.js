@@ -22,10 +22,12 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
 
-  interesstedIn: {
-    type: mongoose.Schema.ObjectId,
-    ref: "User",
-  },
+  interesstedIn: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
+  ],
 
   user: [
     {

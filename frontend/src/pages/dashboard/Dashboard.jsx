@@ -19,15 +19,23 @@ const Dashboard = () => {
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.auth
   );
+
+  const { isLoadingP, isErrorP, messageP } = useSelector(
+    (state) => state.posts
+  );
+
+  // const { interesstedIn, isErrorI, messageI } = useSelector(
+  //   (state) => state.interesstedIn
+  // );
+
+  const { isErrorE, messageE } = useSelector((state) => state.events);
+
   useEffect(() => {
     if (!localStorage.getItem("user")) {
       navigate("/");
     }
   }, [user, isLoading, isSuccess, isError, message, navigate]);
 
-  const { isLoadingP, isErrorP, messageP } = useSelector(
-    (state) => state.posts
-  );
   useEffect(() => {
     if (isError) {
       console.log(messageP);
@@ -40,7 +48,6 @@ const Dashboard = () => {
     };
   }, [isErrorP, messageP]);
 
-  const { isErrorE, messageE } = useSelector((state) => state.events);
   useEffect(() => {
     if (isErrorE) {
       console.log(messageE);
@@ -52,10 +59,6 @@ const Dashboard = () => {
       dispatch(resetEvent());
     };
   }, [isErrorE, messageE]);
-
-  const { interesstedIn, isErrorI, messageI } = useSelector(
-    (state) => state.interesstedIn
-  );
 
   if (isSuccess || user) {
     if (user?.selectedRole !== "newcomer") {
