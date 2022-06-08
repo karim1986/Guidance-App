@@ -23,7 +23,7 @@ const SuggestionsBox = () => {
                 transition={{ delay: i * 0.35 }}
                 custom={i}
               >
-                <li>
+                <li className="useful__links">
                   <IoMdArrowDropright size={20} />
                   <a
                     href={link.web}

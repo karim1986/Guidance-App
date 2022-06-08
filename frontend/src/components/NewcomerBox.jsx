@@ -65,20 +65,24 @@ const NewcomerBox = ({ counter }) => {
         >
           <p>Messages</p>
           <span className="icon__background">
-            <TiMessages color="#000" size={20} />
+            <TiMessages color="#F47060" size={20} />
           </span>
         </div>
         <div className="newcomer-posts add__style">
           <p>Post</p>
           <span className="icon__background">
-            <AiOutlineEdit color="#000" size={20} onClick={openModal} />
+            <AiOutlineEdit color="#F47060" size={20} onClick={openModal} />
           </span>
           <Modal showModal={showModal} setShowModal={setShowModal} />
         </div>
         <div className="newcomer-events add__style">
           <p>Create Event</p>
           <span className="icon__background">
-            <MdEventAvailable color="#000" size={20} onClick={openModalTwo} />
+            <MdEventAvailable
+              color="#F47060"
+              size={20}
+              onClick={openModalTwo}
+            />
           </span>
           <EventModal
             showModalTwo={showModalTwo}
@@ -87,8 +91,9 @@ const NewcomerBox = ({ counter }) => {
         </div>
         <div className="newcomer-events add__style">
           <p>Interested in</p>
-          {counter}
-          {/* <span className="icon__background">{count}</span> */}
+          <span className="counter__event">
+            {counter <= 1 ? `${counter} event` : `${counter} events`}
+          </span>
         </div>
       </div>
       <div className="liner__deco__two"></div>

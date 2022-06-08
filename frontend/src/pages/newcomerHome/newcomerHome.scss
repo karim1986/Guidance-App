@@ -19,8 +19,8 @@
 .grid__4x2 {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 250px 80px 100px 120px;
+    grid-template-columns: repeat(3,  1fr);
+    grid-template-rows: 300px 100px 1fr;
     grid-gap: 1rem;
 }
 
@@ -28,6 +28,7 @@
 
 .newcomer-profile-box {
     position: relative;
+    width: 450px;
     grid-column: 1 / 2;
     padding: 1.5rem;
     background-image: $newComer-background;
@@ -73,7 +74,7 @@
 .newcomer-profile {
     width: 93%;
     margin: auto;
-    margin-bottom: 0.9rem;
+    margin-bottom: 3.1rem;
     display: flex;
 }
 
@@ -136,14 +137,9 @@
     }
 }
 
-.icon__background {
-    border: 1px solid $primary-color;
-    border-radius: 50%;
-    background: rgba(250, 249, 249, 0.931);
-    padding: 0.5rem;
-    display: flex;
-    justify-content: center;
-   
+.counter__event {
+    margin-bottom: 1rem;
+    color: $primary-color;
 }
 
 .flex-column{
@@ -266,15 +262,53 @@ select {
 }
 
 // **** chat box component styling ****
-.chat__box{
-    // background-color: $secondary-color;
+.events__holder{
+    padding: 15px;
+    background-image: $newComer-background;
+    overflow-y: scroll;
+    color: #fff;
+    background-color: $secondary-color;
     border-radius: 15px;
-    border: 1px solid $primary-color;
     grid-row: 5/9; 
-    background-image: url("../../assets/images/events.svg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+}
+
+.events__header {
+    text-align: center;
+}
+
+.event__title {
+    margin: 0.5rem 0rem;
+    font-size: 1.5rem;
+    color: rgba(216, 214, 214, 0.798);
+    font-weight: 500;
+}
+
+.event__flex {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 2.5rem;
+    margin-bottom: 2.5rem;
+    cursor: pointer;
+
+    svg {
+        margin-right: 1.5rem;
+    }
+}
+
+.event__liner {
+    width: 250px;
+    height: 1px;
+    border: 1px solid rgba(214, 214, 214, 0.693);
+    position: absolute;
+    bottom: -0.1rem;
+}
+
+.event__info {
+    p {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 // **** Aside box component styling *****
@@ -297,7 +331,7 @@ select {
 // **** Event components styling *****
 
 .event__container {
-    width: 90%;
+    width: 80%;
     height: 400px;
     margin: 2rem auto;
     border-radius: 7px;
@@ -391,6 +425,12 @@ select {
     }
 }
 
+.useful__links a{ 
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
 .btn__flex__event {
     display: flex;
     align-items: center;
@@ -407,7 +447,10 @@ select {
 // **** caochs boxes styling *****
 
 .privat-block {
-    border: 1px solid $primary-color;
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+    border: 1px solid $secondary-color;
     padding: 1.5rem;
     background: #87A0BB;
 }
@@ -417,10 +460,9 @@ select {
     align-items: center;
 }
 
-
 .privat__card__content {
     width: 80%;
-    margin: auto;
+    margin: 1rem auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -428,11 +470,12 @@ select {
 
 .privat__image {
     img {
-        width: 68px;
-        height: 68px;
+        width: 70px;
+        height: 70px;
         border-radius: 50%;
         object-fit: cover;
-        border: 1px solid $primary-color;
+        border: 2px solid $primary-color;
+        padding: 2px;
         margin-right: 0.8rem;
     }
 }
@@ -456,13 +499,15 @@ select {
 }
 
 .privat__moreInfo {
+    width: 72%;
     background: #BA4C4C;
-    border: 1px solid rgba(255, 255, 255, 0.646);
+    border: 1px solid #fff;
     border-radius: 7px;
     display: flex;
     justify-content: space-around;
-    margin-left: 26%;
-    margin-right: 14%;
+    margin-left: 85px;
+    padding: 0.4rem;
+    
 }
 
 .status,.city, .country {
@@ -482,12 +527,14 @@ select {
 }
 
 .resize__textarea {
+    width: 90%;
    resize: none;
     border-radius: 7px;
-    background:  #9E5757;
-    padding: 0.5rem;
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.59);
+    background:  #fff;
+    padding: 2rem 4rem 0.5rem 3.5rem;
+    color: #000;
+    line-height: 1.6rem;
+    border: 1px solid #fff;
 }
 
 .btn-privat {

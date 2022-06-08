@@ -18,7 +18,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", require("./routes/userRoutes"));
 app.use("/api/posts", require("./routes/postsRoutes"));
 app.use("/api/event", require("./routes/eventRoutes"));
-app.use("/api/event/interesstedEvent", require("./routes/eventRoutes"));
+// app.use("/api/event/interesstedEvent", require("./routes/eventRoutes"));
+// app.use("/api/event/notInteresstedEvent", require("./routes/eventRoutes"));
 app.use("/api/conversation", require("./routes/conversationRoutes"));
 app.use("/api/message", require("./routes/messageRoutes"));
 

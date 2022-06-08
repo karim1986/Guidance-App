@@ -52,4 +52,29 @@ const interesstedEvent = async (req, res) => {
   return res.status(200).json({ success: true, data: event });
 };
 
-module.exports = { getEvents, createEvent, interesstedEvent };
+const notInteresstedEvent = async (req, res, next) => {
+  const { eventId, user } = req.body;
+  let event;
+  try {
+    event = await Event.findByIdAndUpdate(
+      eventId,
+      {
+        $pull: { interesstedIn: user },
+      },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+  if (!event) {
+    return res.status(404).json({ message: "unable to update" });
+  }
+  return res.status(200).json({ success: true, data: event });
+};
+
+module.exports = {
+  getEvents,
+  createEvent,
+  interesstedEvent,
+  notInteresstedEvent,
+};

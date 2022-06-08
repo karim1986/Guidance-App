@@ -4,10 +4,12 @@ const {
   createEvent,
   getEvents,
   interesstedEvent,
+  notInteresstedEvent,
 } = require("../controllers/eventController");
 router.get("/", getEvents);
 router.post("/", createEvent);
-router.put("/", interesstedEvent);
+router.put("/interesst", interesstedEvent);
+router.put("/not", notInteresstedEvent);
 /*router.put("/update/:id", updateEvent);
 router.get("/:id", getById);
 router.delete("/delete/:id", deleteEvent);

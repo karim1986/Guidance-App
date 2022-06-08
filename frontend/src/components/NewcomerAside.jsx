@@ -12,7 +12,12 @@ import { AiOutlineReload } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
-const NewcomerAside = () => {
+const fade = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { ease: "easeOut", duration: 0.75 } },
+};
+
+const NewcomerAside = ({ category, field, search }) => {
   // const [event, setEvent] = useState(getEvents());
   const { user } = useSelector((state) => state.auth);
 
@@ -25,23 +30,29 @@ const NewcomerAside = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const getInterEvents = (eventId, user) => {
-  //   dispatch(interesstedEvents({ eventId, user: user._id }));
-  // };
-  // useEffect(() => {
-  //   sendInterstedRequset();
-  // }, []);
-
   const sendInterstedRequset = async (id) => {
     const res = await axios
 
-      .put("http://localhost:2300/api/event/interesstedEvent", {
+      .put("http://localhost:2300/api/event/interesst", {
         eventId: id,
         user: user._id,
       })
       .catch((err) => console.log(err));
     const data = await res.data;
+    console.log(data);
+    return data;
+  };
 
+  const sendNotInterstedRequset = async (id) => {
+    const res = await axios
+
+      .put("http://localhost:2300/api/event/not", {
+        eventId: id,
+        user: user._id,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
     return data;
   };
 
@@ -89,10 +100,10 @@ const NewcomerAside = () => {
                     <div className="event__menu">
                       <div className="date__time__flex">
                         <div className="event event__date">
-                          <p>{event.date}</p>
+                          <p> {event.date}</p>
                         </div>
                         <div className="event event__time">
-                          <p>{event.time}</p>
+                          <p>Time{event.time}</p>
                         </div>
                       </div>
                       <div className="event event__description">
@@ -108,7 +119,9 @@ const NewcomerAside = () => {
                         <AiOutlineCheck />
                         <button
                           type="button"
-                          onClick={() => sendInterstedRequset(event._id)}
+                          onClick={() => {
+                            sendInterstedRequset(event._id);
+                          }}
                         >
                           Interested
                         </button>
@@ -118,7 +131,13 @@ const NewcomerAside = () => {
                         className="btn__flex__event not--interessted--btn"
                       >
                         <AiOutlineClose />
-                        <button>Not interessted</button>
+                        <button
+                          onClick={() => {
+                            sendNotInterstedRequset(event._id);
+                          }}
+                        >
+                          Not interessted
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -129,7 +148,15 @@ const NewcomerAside = () => {
         <div className="privat__card">
           {data &&
             data
-              .filter((post) => post.creator.selectedRole !== "newcomer")
+              .filter(
+                (post) =>
+                  post.creator.selectedRole === category &&
+                  post.message.includes(field) &&
+                  // ||
+                  // (post.creator.selectedRole === category &&
+                  //   post.message.includes(search))
+                  post.message.includes(search)
+              )
               .sort((a, b) => a.createdAt > b.createdAt)
               .reverse()
               .map((post) => (
