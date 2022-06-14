@@ -8,14 +8,15 @@
 }
 
 .register-border {
-    border: 1px solid lightgray;
+    border: 1px solid $primary-color;
     border-radius: 7px;
     width: 450px;
     padding: 1.5rem;
+    box-shadow: 1px 1px 10px 2px $primary-color;
 }
 
 .sub-form-login {
-    border: 1px solid lightgray;
+    border: 1px solid $primary-color;
     margin-top: 1.5rem;
     padding: 1.5rem;
     width: 450px;
@@ -29,11 +30,17 @@
     }
 }
 
+.text-logo {
+    h1 {
+        color: $primary-color;
+    }
+}
+
 .btn-primary {
     display: block;
-    margin:3rem auto;
-    
+    margin: 3rem auto;
 }
+
 .form-group {
     width: 100%;
     text-align: center;
@@ -50,9 +57,11 @@
 }
 
 .load_foto {
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     input  {
        border: 1px solid lightgray;
        padding: 1.5rem;
@@ -70,9 +79,18 @@
     text-align: center;
 }
 
+.register-text {
+
+    p {
+        color: rgba(255, 255, 255, 0.704);
+        font-size: 1.7rem;
+    }
+}
+
 .register-logo {
     padding-top: 1.5rem;
     font-family: MonteCarlo;
+    color: $primary-color;
 }
 
 .register-text {
@@ -89,6 +107,12 @@
        padding: 0.5rem;
       cursor: pointer;
   }
+}
+
+.sub-form-login {
+    p {
+        color: rgba(255, 255, 255, 0.704);;
+    }
 }
 
 

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AiOutlineReload } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
+import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const PrivatAside = () => {
   const dispatch = useDispatch();
@@ -18,8 +19,34 @@ const PrivatAside = () => {
 
   const { user } = useSelector((state) => state.auth);
 
-  const refreshPage = () => {
-    window.location.reload();
+  // const refreshPage = () => {
+  //   window.location.reload();
+  // };
+
+  const sendInterstedRequset = async (id) => {
+    const res = await axios
+
+      .put("http://localhost:2300/api/event/interesst", {
+        eventId: id,
+        user: user._id,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data;
+  };
+
+  const sendNotInterstedRequset = async (id) => {
+    const res = await axios
+
+      .put("http://localhost:2300/api/event/not", {
+        eventId: id,
+        user: user._id,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+    return data;
   };
 
   const postConversation = async (userId) => {
@@ -42,7 +69,6 @@ const PrivatAside = () => {
 
   return (
     <div className="aside aside__profiles">
-      <AiOutlineReload onClick={refreshPage} />
       {data &&
         data
           .filter((post) => post.creator.selectedRole === "newcomer")
@@ -63,11 +89,14 @@ const PrivatAside = () => {
                   <p>{post.message}</p>
                 </div>
               </div>
-              <div className="btn btn-profile">
-                <button onClick={() => handleConversation(post.creator._id)}>
+              <div className="btn btn-profile pro_btn">
+                <button
+                  className="contact__bt"
+                  onClick={() => handleConversation(post.creator._id)}
+                >
                   Contact
                 </button>
-                <button>I can't help</button>
+                <button className="noContact__bt">I can't help</button>
               </div>
             </div>
           ))}
@@ -80,9 +109,6 @@ const PrivatAside = () => {
                   <div className="event__image">
                     <img src={event.profilePicture} alt="event picture" />
                   </div>
-                  {/* <div className="event__header">
-                    <h3>Event</h3>
-                  </div> */}
                   <div className="event__menu">
                     <div className="date__time__flex">
                       <div className="event event__date">
@@ -101,10 +127,30 @@ const PrivatAside = () => {
                     </div>
                   </div>
                   <div className="btn btn-profile">
-                    <button className="interessted__btn">Interested</button>
-                    <button className="not__interessted__btn">
-                      Not interessted
-                    </button>
+                    <div className="btn__flex__event interessted--btn">
+                      <AiOutlineCheck />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          sendInterstedRequset(event._id);
+                        }}
+                      >
+                        Interested
+                      </button>
+                    </div>
+                    <div
+                      type="button"
+                      className="btn__flex__event not--interessted--btn"
+                    >
+                      <AiOutlineClose />
+                      <button
+                        onClick={() => {
+                          sendNotInterstedRequset(event._id);
+                        }}
+                      >
+                        Not interessted
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

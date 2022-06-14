@@ -19,10 +19,11 @@
 
 .form-border {
     text-align: center;
-    border: 1px solid lightgray;
+    border: 1px solid $primary-color;
     width: 400px;
     border-radius: 7px;
     padding: 1.2rem;
+    box-shadow: 1px 1px 10px 2px $primary-color;
 }
  
 .form-group {

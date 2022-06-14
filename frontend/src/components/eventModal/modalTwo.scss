@@ -2,7 +2,7 @@
 
 .event__container {
     border: none;
-    height: 70%;
+    height: 50%;
 }
 
 .event__image {
@@ -22,12 +22,15 @@
 .modal__wrapper {
     h3 {
         margin: 2rem;
+        font-weight: bold;
     }
 }
 
 .upload__foto {
     display: flex;
     align-items: center;
+    margin-bottom: 2rem;
+
     label {
         color: $secondary-color;
         font-size: 1.5rem;
@@ -41,20 +44,24 @@
     margin-right: 1.3rem;
 }
 
+.event__address, .event__description,.event__date__selection {
+    margin-left: 1rem;
+}
+ 
 .event__date__selection, .event__time,.event__address, .event__description {
    
     input {
         background-color: transparent;
-        margin: 0.5rem;
-        border-radius: 7px;
-        border: 1px solid $primary-color;
+        margin: 0.5rem 0.5rem;
+        border: none;
         outline: none;
         padding: 0.5rem;
-      
     }
 
     label {
         margin-right: 1.5rem;
+        color: $secondary-color;
+        font-weight: bold;
     }
 }
 

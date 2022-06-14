@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { BsCircle, BsCalendarEvent } from "react-icons/bs";
-import { RiShareForwardLine } from "react-icons/ri";
+
+import { TiMessages } from "react-icons/ti";
+import { BsCalendar2Event } from "react-icons/bs";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 import Modal from "../components/postModal/Modal";
 import EventModal from "../components/eventModal/Modal";
@@ -12,6 +13,7 @@ function PrivatNotificationBox() {
   const [showModalTwo, setShowModalTwo] = useState(false);
 
   const { user } = useSelector((state) => state.auth);
+  const { events } = useSelector((state) => state.events);
 
   const navigate = useNavigate();
 
@@ -23,25 +25,30 @@ function PrivatNotificationBox() {
     setShowModalTwo((prev) => !prev);
   };
 
+  let count;
+
+  if (events.data) {
+    if (user) {
+      for (let i = 0; i < events.data.length; i++) {
+        count = events.data.filter((blog) =>
+          blog.interesstedIn.includes(user._id)
+        ).length;
+      }
+    }
+  }
+
   return (
     <div className="notefication-container">
       <div className="messages__ntf" onClick={() => navigate("/messenger")}>
         <p>Messages</p>
         <span className="absolute-position">
-          <BsCircle size={20} color="#fff" />
+          <TiMessages size={21} color="F47060" />
         </span>
       </div>
-      {/* <div className="post__ntf">
-        <p>Post</p>
-        <span>
-          <RiShareForwardLine size={20} onClick={openModal} />
-        </span>
-        <Modal showModal={showModal} setShowModal={setShowModal} />
-      </div> */}
       <div className="createEvent__ntf">
         <p>Create Event</p>
         <span>
-          <BsCalendarEvent color="#fff" size={20} onClick={openModalTwo} />
+          <BsCalendar2Event color="#F47060" size={20} onClick={openModalTwo} />
         </span>
         <EventModal
           showModalTwo={showModalTwo}
@@ -49,8 +56,10 @@ function PrivatNotificationBox() {
         />
       </div>
       <div className="interessted__in">
-        <p>Interested in</p>
-        <span> Events</span>
+        <p>Interested In</p>
+        <span className="event__count">
+          {count <= 1 ? `${count} event` : `${count} events`}
+        </span>
       </div>
     </div>
   );

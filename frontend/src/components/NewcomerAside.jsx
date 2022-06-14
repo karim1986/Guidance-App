@@ -3,11 +3,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSelector, useDispatch } from "react-redux";
-import { getEvents, getPrivat } from "../services/fakeservices";
-import {
-  interesstedEvents,
-  resetInteressted,
-} from "../features/interessted/interesstedSlice";
 import { AiOutlineReload } from "react-icons/ai";
 import { GoLocation } from "react-icons/go";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
@@ -18,7 +13,6 @@ const fade = {
 };
 
 const NewcomerAside = ({ category, field, search }) => {
-  // const [event, setEvent] = useState(getEvents());
   const { user } = useSelector((state) => state.auth);
 
   const { posts } = useSelector((state) => state.posts);
@@ -72,10 +66,6 @@ const NewcomerAside = ({ category, field, search }) => {
     postConversation(userId)
       .then((data) => console.log(data))
       .then(navigate("/messenger"));
-  };
-
-  const refreshPage = () => {
-    window.location.reload();
   };
 
   return (
@@ -220,9 +210,9 @@ const NewcomerAside = ({ category, field, search }) => {
               ))}
         </div>
       </div>
-      <div className="navigator__aside">
+      {/* <div className="navigator__aside">
         <AiOutlineReload onClick={refreshPage} />
-      </div>
+      </div> */}
     </div>
   );
 };

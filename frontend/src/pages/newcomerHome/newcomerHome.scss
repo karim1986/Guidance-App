@@ -30,15 +30,15 @@
     position: relative;
     width: 450px;
     grid-column: 1 / 2;
+    grid-row: 1 / 3;
     padding: 1.5rem;
     background-image: $newComer-background;
     border-radius: 15px;
+    box-shadow: 1px 1px 5px 1px lightgray;
 }
 
 .logout-bnt {
     position: absolute;
-    border: 1px solid $primary-color;
-    border-radius: 45px;
     top: 10px;
     right: 10px;
     display: flex;
@@ -46,10 +46,6 @@
     margin-top: 10px;
     cursor: pointer;
     font-weight: bolder;
-
-    &:hover {
-        box-shadow: 1px 1px 6px 1px $primary-color;
-    }
 
     span {
         margin-left:0.5rem;
@@ -199,8 +195,9 @@
     align-items: center;
     padding: 1rem;
     background-image: $newComer-background;
-    grid-row: 2 / 3;
+    grid-row: 3 / 4;
     border-radius: 15px;
+    box-shadow: 1px 1px 5px 1px lightgray;
 }
 
 .search {
@@ -231,8 +228,9 @@ select {
     padding: 1.5rem;
     background-image: $newComer-background;
     border-radius: 15px;
-    grid-row: 3 / 5;
+    grid-row: 4 / 9;
     overflow-y: scroll;
+    box-shadow: 1px 1px 5px 1px lightgray;
 }
 
 .suggestion__title {
@@ -313,7 +311,7 @@ select {
 
 // **** Aside box component styling *****
 .newcomer__aside{
-    padding: 1.5rem;
+    padding: 0.5rem;
     border-radius: 7px;
     grid-column: 2 / -1;
     grid-row: 1 / 9;
@@ -331,13 +329,13 @@ select {
 // **** Event components styling *****
 
 .event__container {
-    width: 80%;
+    width: 100%;
     height: 400px;
-    margin: 2rem auto;
+    margin-bottom: 2rem;
     border-radius: 7px;
     overflow: hidden;
     border: 0.5px solid lightslategray;
-    background-color: rgba(246, 230, 230, 0.767);
+    background-color: #fff;
     cursor: pointer;
 }
 
@@ -447,12 +445,11 @@ select {
 // **** caochs boxes styling *****
 
 .privat-block {
-    width: 80%;
-    margin: auto;
     border-radius: 15px;
     border: 1px solid $secondary-color;
     padding: 1.5rem;
     background: #87A0BB;
+    margin-bottom: 2rem;
 }
 
 .privat__flex {
@@ -498,14 +495,20 @@ select {
     color: rgba(255, 255, 255, 0.651);
 }
 
+.loading__spinner__container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .privat__moreInfo {
-    width: 72%;
-    background: #BA4C4C;
-    border: 1px solid #fff;
-    border-radius: 7px;
+    width: 70%;
+    border: none;
+    border-top: 1px solid $secondary-color;
     display: flex;
     justify-content: space-around;
-    margin-left: 85px;
+    margin-left: 120px;
     padding: 0.4rem;
     
 }

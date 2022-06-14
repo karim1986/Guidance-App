@@ -25,9 +25,6 @@ const Post = () => {
   return (
     <div className="post__container">
       <div className="post__text post-flex">
-        <div className="background__image">
-          <img src={postImg} alt="" />
-        </div>
         <form onSubmit={handleSubmit}>
           <div className="form__group">
             <input

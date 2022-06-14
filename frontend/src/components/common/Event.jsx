@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { createEvent } from "../../features/events/eventsSlice";
 import FileBase from "react-file-base64";
@@ -17,6 +18,7 @@ const Event = () => {
   const { date, time, address, description, profilePicture } = data;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
@@ -31,11 +33,8 @@ const Event = () => {
   };
 
   return (
-    <div className="event__container">
+    <div className="events__container">
       <div className="flex__container">
-        <div className="event__image">
-          <img src={EventPost} alt="event" />
-        </div>
         <form className="form__flex" onSubmit={handleSubmit}>
           <div className="upload__foto">
             <div className="load_foto">
@@ -55,11 +54,13 @@ const Event = () => {
           <div className="event__date__selection">
             <label htmlFor="date">Date</label>
             <input
+              autofocus
               onChange={handleChange}
               type="text"
               id="date"
               name="date"
               value={date}
+              placeholder="Ex: Friday,20 jun..."
             />
           </div>
           <div className="event__time">
@@ -70,24 +71,27 @@ const Event = () => {
               id="time"
               name="time"
               value={time}
+              placeholder="Ex: 14:30 am..."
             />
           </div>
           <div className="event__address">
-            <label htmlFor="">Address</label>
+            <label>Address</label>
             <input
               onChange={handleChange}
               type="text"
               name="address"
               value={address}
+              placeholder="Ex: Alexanderplatz 20, 13405. Berlin..."
             />
           </div>
           <div className="event__description">
-            <lable>Description</lable>
+            <lable>Descript.</lable>
             <input
               onChange={handleChange}
               type="text"
               name="description"
               value={description}
+              placeholder="Ex: Find cheapest language school..."
             />
             <div className="post__submit">
               <button className="btn btn-secondary submit" type="submit">

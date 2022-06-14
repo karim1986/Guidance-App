@@ -7,6 +7,7 @@ import NewcomerBox from "../../components/NewcomerBox";
 import SearchBox from "../../components/SearchBox";
 import SuggestionsBox from "../../components/SuggestionsBox";
 import Toggle from "../../components/common/Toggle";
+import berlinTwo from "../../videos/berlin2.mp4";
 import "./newcomerHome.scss";
 
 const NewcomerHome = () => {
@@ -51,6 +52,15 @@ const NewcomerHome = () => {
     <div className="container">
       <div className="newcomerPage-container">
         <div className="grid__container grid__4x2">
+          <div className="berlin__vidoe">
+            <video
+              className="video"
+              controls
+              muted
+              autoPlay={true}
+              src={berlinTwo}
+            ></video>
+          </div>
           <NewcomerBox counter={count} setCounter={setCounter} />
           <SearchBox
             category={category}

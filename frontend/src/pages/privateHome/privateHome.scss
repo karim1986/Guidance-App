@@ -16,9 +16,14 @@
 
 .notefication-container {
     grid-column: 1;
-    grid-row: 2 / 3;
+    grid-row: 4 / 5;
     padding:  0.5rem 3.5rem;  
     width: 450px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 1px 1px 5px 1px lightgray;
    }
 
 .pofile-box, .notefication-container, .events__holder {
@@ -28,19 +33,30 @@
 
 .pofile-box {
     position: relative;
-    grid-row: 1 / 2;
+    grid-row: 1 / 4;
     padding-right: 2rem;
     width: 450px;
+    box-shadow: 1px 1px 5px 1px lightgray;
+}
+
+.video {
+    grid-row: 1 / 2;
+    grid-column: 4 / -1;
+    height: 100%;
+    width: 500px;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .guidance-logo {
     h3 {
         text-align: center;
         font-family: MonteCarlo;
-        font-size: 3rem;
+        font-size: 4rem;
         font-weight: 100;
-        color: #fff;
-        margin: 0;
+        color: $primary-color;
+        font-weight: bold;
+        margin-top: 5rem;
     }
 }
 
@@ -54,9 +70,9 @@
     color: $secondary-color;
     font-weight: bolder;
     margin-right: 10px;
+    transition: all 0.2s;
     &:hover {
         transform: scale(1.1);
-       
     }
     span {
         margin-left: 0.5rem;
@@ -64,22 +80,22 @@
     }
 }
 
-
 .profile-info {
+    margin-left: 2rem;
     display: flex;
     align-items: center;
     padding: 1rem;
-    padding-left: 0;
 }
 
 .profile-image {
-    margin-right: 0.6rem;
+    margin-right: 1rem;
     img {
-        height: 60px;
-        width: 60px;
+        height: 80px;
+        width: 80px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid $primary-color;
+        border: 3px solid #fff;
+        padding: 0.5rem;
     }
 }
 
@@ -89,16 +105,32 @@
     justify-content: space-between;
 }
 
+.pro_btn {
+    background-color: #f1e9e9;
+    padding: 1rem;
+}
+
+.noContact__bt, .contact__bt {
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.noContact__bt {
+    margin-left: 4rem;
+}
+
 .profile-status {
     p {
         color: #fff;
-        font-size: 1.3rem;
+        margin-bottom: 0.2rem;
     }
     :nth-child(1) {
         font-weight: bold;
+        font-size: 1.6rem;
     }
     :nth-child(2) {
-        color: rgba(245, 245, 245, 0.589);
+        font-size: 1.2rem;
         color: $primary-color;
     }
 }
@@ -111,47 +143,45 @@
 }
 
 .events__holder {
-   grid-row: 3/9;
-   grid-column: 4/ 5;
-   width: 450px;
+   grid-row: 2/4;
+   grid-column: 4 / 5;
+   
    overflow-y: scroll;
+   box-shadow: 1px 1px 5px 1px lightgray;
 }
 
-.line-dec {
-    width: 50px;
-    height: 1px;
-    border: 1px solid rgba(245, 245, 245, 0.589);
-    margin-right: 0.2rem;
-}
+// .line-dec {
+//     width: 50px;
+//     height: 1px;
+//     border: 1px solid rgba(245, 245, 245, 0.589);
+//     margin-right: 0.2rem;
+// }
 
 .aside {
    grid-column: 2 / 4;
    grid-row: 1 / 9;
-   border-left: 1px solid gray;
-   border-right: 1px solid gray;
-   width: 65%;
+}
+
+.profile__p {
+    margin-bottom: 1rem;
+    
 }
 
 .profile-status-box {
-    border: 1px solid lightgray;
-    background: #BA4C4C;
+    margin-top: 2rem;
     margin-left: 3.4rem;
     margin-right: 0.6rem;
     border-radius: 10px;
-    padding: 0.5rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-around;
-    color: rgba(245, 245, 245, 0.589);
-    font-size: 1.1rem;
+    color: rgba(238, 235, 235, 0.923);
+    font-size: 1.2rem;
      & span {
          color: #fff;
-         font-size: 1.2rem;
+         font-size: 1.5rem;
          font-weight: bold;
      }
-}
-
-.status {
-    color: rgb(35, 238, 35);
 }
 
 .status, .location, .country {
@@ -161,7 +191,7 @@
 
 .profile-bio {
     width: 100%;
-    margin:1rem auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
 }
@@ -171,12 +201,18 @@
     margin-left: 36px;
     width: 20%;
     border: none;
-    padding: 0.3rem;
-    border-radius: 7px;
+    padding: 1rem;
+    border-radius: 999px;
     background: $primary-color;
     color: #fff;
     font-weight: bold;
     cursor: pointer;
+    transition: all 0.2s;
+    &:hover {
+        background-color: $hover-primary;
+        transform: scale(1.1);
+        box-shadow: 1px 1px 5px 1px #fff;
+    }
 }
 
 .profile__textarea {
@@ -188,8 +224,9 @@
     border-radius: 7px;
     resize: none;
     padding: 0.6rem;
+    height: 120px;
+    margin-bottom: 2rem;
     margin-left: 3.5rem;
-    border: 1px solid lightgray;
 }
 
 .messages__ntf, .post__ntf, .interessted__in, .createEvent__ntf {
@@ -199,13 +236,18 @@
     
     p {
          margin: 1rem;
-         font-size: 1.4rem;
+         font-size: 1.5rem;
          font-weight: bold;
+         color: #fff;
      }
 }
 
+.event__count {
+    color: $primary-color;
+}
+
 .aside {
-    padding: 1.5rem;
+    padding: 0.5rem;
     overflow-y: scroll;
     width: 100%;
 }
@@ -214,6 +256,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 2rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
     
     img {
         width: 70px;
@@ -225,17 +269,25 @@
 
 .comer-container {
     border: 1px solid black;
-    width: 80%;
-    margin:1rem auto 3rem auto;
+    margin-bottom: 2rem;
     border-radius: 7px;
     overflow: hidden;
 }
 
 .newComer-profile {
-    // border: 1px solid red;
     height: 190px;
-    padding: 1.5rem;
+    padding: 1rem;
     background: #F1E9E9;
+}
+
+.newComer-text {
+    width: 70%;
+    margin: auto;
+
+    p {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
 }
 
 .column-flex {
@@ -243,7 +295,7 @@
     flex-direction: column;
     margin:0.5rem 1rem;
     :nth-child(1) {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         font-weight: bolder;
         color: rgb(44, 42, 42);
     }

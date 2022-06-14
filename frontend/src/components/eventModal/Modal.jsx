@@ -47,7 +47,10 @@ export const Modal = ({ showModalTwo, setShowModalTwo }) => {
                 size={25}
                 onClick={() => setShowModalTwo((prev) => !prev)}
               />
-              <Event />
+              <Event
+                showModalTwo={showModalTwo}
+                setShowModalTwo={setShowModalTwo}
+              />
             </div>
           </animated.div>
         </div>

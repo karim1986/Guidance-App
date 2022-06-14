@@ -6,6 +6,7 @@ import Toggle from "../../components/common/Toggle";
 import PrivatBox from "../../components/PrivatBox";
 import PrivatNotificationBox from "../../components/PrivatNotificationBox";
 import PrivatAside from "../../components/PrivatAside";
+import berlin from "../../videos/berlin.mp4";
 import "./privateHome.scss";
 
 const PrivateHome = () => {
@@ -23,9 +24,13 @@ const PrivateHome = () => {
       }
     }
   }
+
   return (
     <div className="privatePage-container">
       <div className="grid__container grid__2x3">
+        <div className="berlin__vidoe">
+          <video className="video" controls muted autoPlay src={berlin}></video>
+        </div>
         <PrivatBox />
         <PrivatNotificationBox />
         <div className="events__holder privat__evt__holder">

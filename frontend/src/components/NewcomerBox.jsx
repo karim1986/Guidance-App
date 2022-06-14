@@ -43,7 +43,7 @@ const NewcomerBox = ({ counter }) => {
       </div>
       <div className="newcomer-profile">
         <div className="newComer__profile__image">
-          <div className="line__deco"></div>
+          {/* <div className="line__deco"></div> */}
           <img src={user && profilePicture} alt="" />
         </div>
         <div className="flex-column">
@@ -96,7 +96,7 @@ const NewcomerBox = ({ counter }) => {
           </span>
         </div>
       </div>
-      <div className="liner__deco__two"></div>
+      {/* <div className="liner__deco__two"></div> */}
     </div>
   );
 };

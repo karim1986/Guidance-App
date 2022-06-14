@@ -13,10 +13,10 @@
 }
 
 .modal__wrapper {
-    width: 800px;
+    width: 500px;
     height: 420px;
     box-shadow: 0 5px 16px rgba(0,0,0,0.2);
-    background: rgb(202, 202, 202);
+    background: #fff;
     color:#000;
     position: relative;
     z-index: 10;
@@ -31,7 +31,7 @@
 
     h3 {
         font-weight: 400;
-        margin: 5rem;
+        padding-top: 5rem;
         text-align: center;
         color: $secondary-color;
     }

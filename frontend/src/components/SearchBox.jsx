@@ -9,16 +9,14 @@ const SearchBox = ({
 }) => {
   return (
     <div className="search__box">
-      <form>
-        <input
-          value={search}
-          onChange={handleSearch}
-          className="search"
-          type="search"
-          placeholder="search..."
-        />
-        <button onClick={handleSubmitSearch}>Search</button>
-      </form>
+      <input
+        value={search}
+        onChange={handleSearch}
+        className="search"
+        type="search"
+        placeholder="search..."
+      />
+      {/* <button onClick={handleSubmitSearch}>Search</button> */}
 
       <select value={field} onChange={handleField} name="" id="">
         <option value="">Fields...</option>

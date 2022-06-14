@@ -4,6 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 import { createPost } from "../features/posts/postsSlice";
 import { FiLogOut } from "react-icons/fi";
+import { GoLocation } from "react-icons/go";
+import { MdLocationCity } from "react-icons/md";
+import { HiStatusOnline } from "react-icons/hi";
+import { HiStatusOffline } from "react-icons/hi";
 
 function PrivatBox() {
   const [message, setMessage] = useState("");
@@ -51,20 +55,24 @@ function PrivatBox() {
             <p>{user && user.selectedRole}</p>
           </div>
           <div className="creation-date">
-            {/* <p>Joined {user.createdAt.split("T").shift()}</p> */}
+            {/* <p>Joined Guidance {user.createdAt.split("T").shift()}</p> */}
           </div>
         </div>
       </div>
       <div className="profile-status-box">
         <div className="status">
-          <span>Status</span>
-          {user ? "Online" : "Offline"}
+          <span className="profile__p">Status</span>
+          {user ? (
+            <HiStatusOnline size={20} color="green" />
+          ) : (
+            <HiStatusOffline size={20} color="red" />
+          )}
         </div>
         <div className="location">
-          <span>City</span> Berlin
+          <span className="profile__p">City</span> Berlin
         </div>
         <div className="country">
-          <span>Country</span> Germany
+          <span className="profile__p">Country</span> Germany
         </div>
       </div>
       <div className="profile-bio">
